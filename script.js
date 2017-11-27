@@ -24,6 +24,8 @@ function getGame(){
 
       if (game[0].isGameActivated) {
 
+      $('.summary').append(`<h1><span class="nope">Game underway</span> in ${game[0].arena.city}</h1>`)  
+
       $('.homeTeamName').append(`<h1>${game[0].hTeam.triCode}</h1>`)
       $('.awayTeamName').append(`<h1>${game[0].vTeam.triCode}</h1>`)
       $('.homeTeamScore').append(`<h1>${game[0].hTeam.score}</h1>`)
