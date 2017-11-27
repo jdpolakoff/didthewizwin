@@ -91,11 +91,17 @@ function getGame(){
           lost <span id="homeScore">00</span>-<span id="visitingScore">00</span> to the
           ${lastGame.v.tn} on ${lastGameTime}. The Wizards are now ${lastGame.h.re} on the season.</h1>`)
         } else if (lastGame.v.ta === 'WAS' && parseInt(lastGame.v.s) < parseInt(lastGame.h.s)){
-          $('.scoreboard').append(`<h1><span class="nope">Nope.</span> The ${lastGame.v.tn} (${lastGame.v.re}) lost to the ${lastGame.h.tn} (${lastGame.h.re}) on ${lastGameTime}.</h1>`)
+          $('.scoreboard').append(`<h1><span class="nope">Nope.</span> The ${lastGame.v.tn} lost
+           <span id="visitingScore">00</span>-<span id="homeScore">00</span> to the ${lastGame.h.tn}
+            on ${lastGameTime}. The Wizards are now ${lastGame.v.re} on the season.</h1>`)
         } else if (lastGame.h.ta === 'WAS' && parseInt(lastGame.h.s) > parseInt(lastGame.v.s)) {
-            $('.scoreboard').append(`<h1>Yep! The ${lastGame.h.tn} (${lastGame.h.re}) beat the ${lastGame.v.tn} (${lastGame.v.re}) on ${lastGameTime}.</h1>`)
+            $('.scoreboard').append(`<h1><span class="nope">Yep!</span> The ${lastGame.h.tn} beat the ${lastGame.v.tn}
+            <span id="homeScore">00</span>-<span id="visitingScore">00</span> on ${lastGameTime}. The Wizards
+            are now ${lastGame.h.re} on the season.</h1>`)
         } else if (lastGame.v.ta === 'WAS' && parseInt(lastGame.v.s) > parseInt(lastGame.h.s)){
-            $('.scoreboard').append(`<h1>Yep! The ${lastGame.v.tn} (${lastGame.v.re}) beat the ${lastGame.h.tn} (${lastGame.h.re}) on ${lastGameTime}.</h1>`)
+            $('.scoreboard').append(`<h1><span class="nope">Yep!</span> The ${lastGame.v.tn}
+            beat the ${lastGame.h.tn} <span id="visitingScore">00</span>-<span id="homeScore">00</span>
+            on ${lastGameTime}. The Wizards are now ${lastGame.v.re} on the season.</h1>`)
         }
 
         // $('.homeTeamName').append(`<h1>${lastGame.h.ta}</h1>`)
