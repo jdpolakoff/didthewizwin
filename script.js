@@ -18,10 +18,6 @@ function getGame(){
     beforeSend: function(){
       $('.container').hide()
       $('.loading').show()
-    },
-    complete: function(){
-      $('.loading').hide()
-      $('.container').show()
     }
   }).done((response) => {
     game = response.games.filter(function(game){
@@ -31,6 +27,9 @@ function getGame(){
     if (typeof game[0] !== 'undefined') {
 
       if (game[0].isGameActivated) {
+
+      $('.loading').hide()
+      $('.container').show()
 
       $('.summary').append(`<h1><span class="nope">Game underway</span> in ${game[0].arena.city}</h1>`)
 
@@ -54,10 +53,6 @@ function getGame(){
         beforeSend: function(){
           $('.container').hide()
           $('.loading').show()
-        },
-        complete: function(){
-          $('.loading').hide()
-          $('.container').show()
         }
       }).done((response) => {
         for (i = 0; i < response.lscd.length; i++){
@@ -81,6 +76,8 @@ function getGame(){
         arr3.push(lastGame.gdte.split('-')[0])
         var lastGameTime = arr3.join('-')
 
+        $('.loading').hide()
+        $('.container').show()
         if (lastGame.h.ta === 'WAS' && parseInt(lastGame.h.s) < parseInt(lastGame.v.s)) {
           $('.summary').append(`<h1><span class="nope">Nope.</span> The ${lastGame.h.tn} (${lastGame.h.re}) lost to the ${lastGame.v.tn} (${lastGame.v.re}) on ${lastGameTime}.</h1>`)
         } else if (lastGame.v.ta === 'WAS' && parseInt(lastGame.v.s) < parseInt(lastGame.h.s)){
