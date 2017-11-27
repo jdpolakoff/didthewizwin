@@ -15,6 +15,22 @@
   border: 2px solid black;
 }
 
+.loading {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  /*border: 2px solid black;*/
+  height: 50%;
+  width: 50%;
+}
+
+.loading img {
+  margin: 0 auto
+}
+
 .scoreboard {
   position: absolute;
   top: 0;

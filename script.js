@@ -14,7 +14,15 @@ function getGame(){
   $.ajax({
     url: url,
     type: 'get',
-    dataType: 'json'
+    dataType: 'json',
+    beforeSend: function(){
+      $('.container').hide()
+      $('.loading').show()
+    },
+    complete: function(){
+      $('.loading').hide()
+      $('.container').show()
+    }
   }).done((response) => {
     game = response.games.filter(function(game){
       return game.hTeam.triCode === 'WAS' || game.vTeam.triCode === 'WAS'
@@ -24,7 +32,7 @@ function getGame(){
 
       if (game[0].isGameActivated) {
 
-      $('.summary').append(`<h1><span class="nope">Game underway</span> in ${game[0].arena.city}</h1>`)  
+      $('.summary').append(`<h1><span class="nope">Game underway</span> in ${game[0].arena.city}</h1>`)
 
       $('.homeTeamName').append(`<h1>${game[0].hTeam.triCode}</h1>`)
       $('.awayTeamName').append(`<h1>${game[0].vTeam.triCode}</h1>`)
@@ -42,7 +50,15 @@ function getGame(){
       $.ajax({
         url: url2,
         type: 'get',
-        dataType: 'json'
+        dataType: 'json',
+        beforeSend: function(){
+          $('.container').hide()
+          $('.loading').show()
+        },
+        complete: function(){
+          $('.loading').hide()
+          $('.container').show()
+        }
       }).done((response) => {
         for (i = 0; i < response.lscd.length; i++){
           if (response.lscd[i].mscd.mon === Date.today().toString('MMMM') || parseInt(response.lscd[i].mscd.mon) + 1 === Date.today().toString('MMMM') || parseInt(response.lscd[i].mscd.mon) - 1 === Date.today().toString('MMMM'))  {
