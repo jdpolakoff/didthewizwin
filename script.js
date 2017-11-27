@@ -35,8 +35,11 @@ function getGame(){
 
       $('.homeTeamName').append(`<h1>${game[0].hTeam.triCode}</h1>`)
       $('.awayTeamName').append(`<h1>${game[0].vTeam.triCode}</h1>`)
-      $('.homeTeamScore').append(`<h1>${game[0].hTeam.score}</h1>`)
-      $('.awayTeamScore').append(`<h1>${game[0].vTeam.score}</h1>`)
+      $('.homeTeamScore').append(`<h1><span class="currentHomeScore">00</span></h1>`)
+      $('.awayTeamScore').append(`<h1><span class="currentVisitingScore">00</span></h1>`)
+
+      $('#currentHomeScore').animateNumber({ number: parseInt(game[0].hTeam.score) })
+      $('#currentVisitingScore').animateNumber({ number: parseInt(game[0].vTeam.score) })
 
       }
 
@@ -92,7 +95,7 @@ function getGame(){
         $('.awayTeamName').append(`<h1>${lastGame.v.ta}</h1>`)
         $('.homeTeamScore').append(`<h1><span id="homeScore">00</span></h1>`)
         $('.awayTeamScore').append(`<h1><span id="visitingScore">00</span></h1>`)
-        
+
         $('#homeScore').animateNumber({ number: parseInt(lastGame.h.s)})
         $('#visitingScore').animateNumber({ number: parseInt(lastGame.v.s)})
       })
