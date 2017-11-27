@@ -88,11 +88,13 @@ function getGame(){
             $('.summary').append(`<h1>Yep! The ${lastGame.v.tn} (${lastGame.v.re}) beat the ${lastGame.h.tn} (${lastGame.h.re}) on ${lastGameTime}.</h1>`)
         }
 
-
         $('.homeTeamName').append(`<h1>${lastGame.h.ta}</h1>`)
         $('.awayTeamName').append(`<h1>${lastGame.v.ta}</h1>`)
-        $('.homeTeamScore').append(`<h1>${lastGame.h.s}</h1>`)
-        $('.awayTeamScore').append(`<h1>${lastGame.v.s}</h1>`)
+        $('.homeTeamScore').append(`<h1><span id="homeScore">00</span></h1>`)
+        $('.awayTeamScore').append(`<h1><span id="visitingScore">00</span></h1>`)
+        
+        $('#homeScore').animateNumber({ number: parseInt(lastGame.h.s)})
+        $('#visitingScore').animateNumber({ number: parseInt(lastGame.v.s)})
       })
 
     }
