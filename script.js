@@ -87,21 +87,25 @@ function getGame(){
         $('body').css('background', 'linear-gradient(-90deg, #002B5C, #E31837, #C4CED4)')
 
         if (lastGame.h.ta === 'WAS' && parseInt(lastGame.h.s) < parseInt(lastGame.v.s)) {
-          $('.scoreboard').append(`<h1><span class="nope">Nope.</span> The ${lastGame.h.tn}
-          lost <span id="homeScore">00</span>-<span id="visitingScore">00</span> to the
-          ${lastGame.v.tn} on ${lastGameTime}. The Wizards are now ${lastGame.h.re} on the season.</h1>`)
+          var text = `<h1><span class="nope">Nope.</span> The ${lastGame.h.tn} lost <span id="homeScore">00</span>-<span id="visitingScore">00</span> to the
+          ${lastGame.v.tn} on ${lastGameTime}. The Wizards are now ${lastGame.h.re} on the season.</h1>`
+          $(text).hide().appendTo('.scoreboard').delay(500).fadeIn(2000)
+          $('.sadWall').delay(500).fadeIn(1000)
         } else if (lastGame.v.ta === 'WAS' && parseInt(lastGame.v.s) < parseInt(lastGame.h.s)){
-          $('.scoreboard').append(`<h1><span class="nope">Nope.</span> The ${lastGame.v.tn} lost
+          var text = `<h1><span class="nope">Nope.</span> The ${lastGame.v.tn} lost
            <span id="visitingScore">00</span>-<span id="homeScore">00</span> to the ${lastGame.h.tn}
-            on ${lastGameTime}. The Wizards are now ${lastGame.v.re} on the season.</h1>`)
+            on ${lastGameTime}. The Wizards are now ${lastGame.v.re} on the season.</h1>`
+            $(text).hide().appendTo('.scoreboard').delay(500).fadeIn(2000)
         } else if (lastGame.h.ta === 'WAS' && parseInt(lastGame.h.s) > parseInt(lastGame.v.s)) {
-            $('.scoreboard').append(`<h1><span class="nope">Yep!</span> The ${lastGame.h.tn} beat the ${lastGame.v.tn}
+            var text = `<h1><span class="nope">Yep!</span> The ${lastGame.h.tn} beat the ${lastGame.v.tn}
             <span id="homeScore">00</span>-<span id="visitingScore">00</span> on ${lastGameTime}. The Wizards
-            are now ${lastGame.h.re} on the season.</h1>`)
+            are now ${lastGame.h.re} on the season.</h1>`
+            $(text).hide().appendTo('.scoreboard').fadeIn(1000)
         } else if (lastGame.v.ta === 'WAS' && parseInt(lastGame.v.s) > parseInt(lastGame.h.s)){
-            $('.scoreboard').append(`<h1><span class="nope">Yep!</span> The ${lastGame.v.tn}
+            var text = `<h1><span class="nope">Yep!</span> The ${lastGame.v.tn}
             beat the ${lastGame.h.tn} <span id="visitingScore">00</span>-<span id="homeScore">00</span>
-            on ${lastGameTime}. The Wizards are now ${lastGame.v.re} on the season.</h1>`)
+            on ${lastGameTime}. The Wizards are now ${lastGame.v.re} on the season.</h1>`
+            $(text).hide().appendTo('.scoreboard').fadeIn(1000)
         }
 
         // $('.homeTeamName').append(`<h1>${lastGame.h.ta}</h1>`)
