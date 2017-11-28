@@ -35,7 +35,7 @@ font-family: 'Lora', serif;
   position: absolute;
 }
 
-.sadWall {
+.sadWall, .happyWall {
   height: 200px;
   position: absolute;
   top: 0;
