@@ -26,9 +26,7 @@ function getGame(){
       return game.hTeam.triCode === 'WAS' || game.vTeam.triCode === 'WAS'
     })
 
-    if (typeof game[0] !== 'undefined') {
-
-      if (game[0].isGameActivated) {
+    if (typeof game[0] !== 'undefined' && game[0].isGameActivated !== false) {
 
       $('.loading').hide()
       $('.container').show()
@@ -43,7 +41,6 @@ function getGame(){
       $('#currentHomeScore').animateNumber({ number: parseInt(game[0].hTeam.score) })
       $('#currentVisitingScore').animateNumber({ number: parseInt(game[0].vTeam.score) })
 
-      }
 
     } else {
 
