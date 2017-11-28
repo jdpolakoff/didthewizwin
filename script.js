@@ -24,14 +24,20 @@ function getGame(){
   }).done((response) => {
     game = response.games.filter(function(game){
       return game.hTeam.triCode === 'WAS' || game.vTeam.triCode === 'WAS'
+      console.log(game)
     })
 
-    if (typeof game[0] !== 'undefined' && game[0].isGameActivated !== false) {
+    if (typeof game !== 'undefined' && game[0].isGameActivated !== false) {
+
+      console.log(game[0])
+
+     // && game[0].isGameActivated === false) {
 
       $('.loading').hide()
       $('.container').show()
-
-      $('.scoreboard').append(`<h1><span class="nope">Game underway</span> in ${game[0].arena.city}</h1>`)
+      $('.innercontain').show()
+      $('body').css('background', 'linear-gradient(-90deg, #002B5C, #E31837, #C4CED4)')
+      $('.innercontain').append(`<h1 class="toptext"><span class="nope">Game underway.</span> We're in quarter number ${game[0].period.current} at the ${game[0].arena.name} in ${game[0].arena.city}:</h1>`)
 
       $('.homeTeamName').append(`<h1>${game[0].hTeam.triCode}</h1>`)
       $('.awayTeamName').append(`<h1>${game[0].vTeam.triCode}</h1>`)
@@ -40,7 +46,6 @@ function getGame(){
 
       $('#currentHomeScore').animateNumber({ number: parseInt(game[0].hTeam.score) })
       $('#currentVisitingScore').animateNumber({ number: parseInt(game[0].vTeam.score) })
-
 
     } else {
 
