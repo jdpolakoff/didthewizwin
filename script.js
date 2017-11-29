@@ -35,12 +35,13 @@ function getGame(){
 
       $('.loading').hide()
       $('.container').show()
-      $('.innercontain').show()
+      $('.scoreboard').show()
+      $('.hidden').show()
       $('body').css('background', 'linear-gradient(-90deg, #002B5C, #E31837, #C4CED4)')
-      $('.innercontain').append(`<h1 class="toptext"><span class="nope">Game underway.</span> We're in quarter number ${game[0].period.current} at the ${game[0].arena.name} in ${game[0].arena.city}:</h1>`)
+      $('.text').append(`<h1 class="toptext"><span class="nope">Game underway.</span> We're in quarter number ${game[0].period.current} at the ${game[0].arena.name} in ${game[0].arena.city}:</h1>`)
 
-      $('.homeTeamName').append(`<h1>${game[0].hTeam.triCode}</h1>`)
-      $('.awayTeamName').append(`<h1>${game[0].vTeam.triCode}</h1>`)
+      $('.homeTeamName').append(`${game[0].hTeam.triCode}`)
+      $('.awayTeamName').append(`${game[0].vTeam.triCode}`)
       $('.homeTeamScore').append(`<h1><span class="currentHomeScore">00</span></h1>`)
       $('.awayTeamScore').append(`<h1><span class="currentVisitingScore">00</span></h1>`)
 
@@ -58,7 +59,7 @@ function getGame(){
         type: 'get',
         dataType: 'json',
         beforeSend: function(){
-          $('.container').hide()
+          $('.scoreboard').hide()
           $('.loading').show()
         }
       }).done((response) => {
@@ -84,33 +85,34 @@ function getGame(){
         var lastGameTime = arr3.join('/')
 
         $('.loading').hide()
-        $('.container').show()
+        $('.scoreboard').show()
+        $('.hidden').hide()
 
         $('body').css('background', 'linear-gradient(-90deg, #002B5C, #E31837, #C4CED4)')
 
         if (lastGame.h.ta === 'WAS' && parseInt(lastGame.h.s) < parseInt(lastGame.v.s)) {
           var text = `<h1><span class="nope">Nope.</span> The ${lastGame.h.tn} lost <span id="homeScore">00</span>-<span id="visitingScore">00</span> to the
           ${lastGame.v.tn} on ${lastGameTime}. The Wizards are now ${lastGame.h.re} on the season.</h1>`
-          $(text).hide().appendTo('.scoreboard').delay(500).fadeIn(2000)
-          $('.sadWall').delay(500).fadeIn(1000)
+          $(text).hide().appendTo('.scoreboard').delay(200).fadeIn(1000)
+          $('.sadWall').fadeIn(1000)
         } else if (lastGame.v.ta === 'WAS' && parseInt(lastGame.v.s) < parseInt(lastGame.h.s)){
           var text = `<h1><span class="nope">Nope.</span> The ${lastGame.v.tn} lost
            <span id="visitingScore">00</span>-<span id="homeScore">00</span> to the ${lastGame.h.tn}
             on ${lastGameTime}. The Wizards are now ${lastGame.v.re} on the season.</h1>`
-            $(text).hide().appendTo('.scoreboard').delay(500).fadeIn(2000)
-            $('.sadWall').delay(500).fadeIn(1000)
+            $(text).hide().appendTo('.scoreboard').delay(200).fadeIn(1000)
+            $('.sadWall').fadeIn(1000)
         } else if (lastGame.h.ta === 'WAS' && parseInt(lastGame.h.s) > parseInt(lastGame.v.s)) {
             var text = `<h1><span class="nope">Yep!</span> The ${lastGame.h.tn} beat the ${lastGame.v.tn}
             <span id="homeScore">00</span>-<span id="visitingScore">00</span> on ${lastGameTime}. The Wizards
             are now ${lastGame.h.re} on the season.</h1>`
-            $(text).hide().appendTo('.scoreboard').fadeIn(1000)
-            $('.happyWall').delay(500).fadeIn(1000)
+            $(text).hide().appendTo('.scoreboard').delay(200).fadeIn(1000)
+            $('.happyWall').fadeIn(1000)
         } else if (lastGame.v.ta === 'WAS' && parseInt(lastGame.v.s) > parseInt(lastGame.h.s)){
             var text = `<h1><span class="nope">Yep!</span> The ${lastGame.v.tn}
             beat the ${lastGame.h.tn} <span id="visitingScore">00</span>-<span id="homeScore">00</span>
             on ${lastGameTime}. The Wizards are now ${lastGame.v.re} on the season.</h1>`
-            $(text).hide().appendTo('.scoreboard').fadeIn(1000)
-            $('.happyWall').delay(500).fadeIn(1000)
+            $(text).hide().appendTo('.scoreboard').delay(200).fadeIn(1000)
+            $('.happyWall').fadeIn(1000)
         }
 
         // $('.homeTeamName').append(`<h1>${lastGame.h.ta}</h1>`)
