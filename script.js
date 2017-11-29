@@ -44,8 +44,8 @@ function getGame(){
       $('.homeTeamScore').append(`<h1><span class="currentHomeScore">00</span></h1>`)
       $('.awayTeamScore').append(`<h1><span class="currentVisitingScore">00</span></h1>`)
 
-      $('#currentHomeScore').animateNumber({ number: parseInt(game[0].hTeam.score) })
-      $('#currentVisitingScore').animateNumber({ number: parseInt(game[0].vTeam.score) })
+      $('.currentHomeScore').animateNumber({ number: parseInt(game[0].hTeam.score) })
+      $('.currentVisitingScore').animateNumber({ number: parseInt(game[0].vTeam.score) })
 
     } else {
 
@@ -63,7 +63,7 @@ function getGame(){
         }
       }).done((response) => {
         for (i = 0; i < response.lscd.length; i++){
-          if (response.lscd[i].mscd.mon === Date.today().toString('MMMM') || parseInt(response.lscd[i].mscd.mon) + 1 === Date.today().toString('MMMM') || parseInt(response.lscd[i].mscd.mon) - 1 === Date.today().toString('MMMM'))  {
+          if (response.lscd[i].mscd.mon === Date.today().toString('MMMM') || parseInt(response.lscd[i].mscd.mon) + 1 === parseInt(Date.today().toString('MMMM')) || parseInt(response.lscd[i].mscd.mon) - 1 === parseInt(Date.today().toString('MMMM')))  {
             var filter = response.lscd[i].mscd.g.filter(function(game){
               return game.h.tn === 'Wizards' || game.v.tn === 'Wizards'
             })
@@ -81,7 +81,7 @@ function getGame(){
         arr3.push(lastGame.gdte.split('-')[1])
         arr3.push(lastGame.gdte.split('-')[2])
         arr3.push(lastGame.gdte.split('-')[0])
-        var lastGameTime = arr3.join('-')
+        var lastGameTime = arr3.join('/')
 
         $('.loading').hide()
         $('.container').show()

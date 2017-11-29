@@ -134,7 +134,7 @@ font-family: 'Lora', serif;
 }
 
 .homeTeamName {
-  margin-right: 5%;
+  /*margin-right: 5%;*/
   margin-top: 40%;
   height: 20%;
   margin-left: auto;
@@ -145,7 +145,7 @@ font-family: 'Lora', serif;
 }
 
 .awayTeamName {
-  margin-right: 5%;
+  /*margin-right: 5%;*/
   margin-top: 40%;
   height: 20%;
   margin-left: auto;
@@ -177,11 +177,11 @@ font-family: 'Lora', serif;
 
 .homeTeamScore h1 {
   font-size: 100px;
-  margin: 0 auto
+  margin: auto;
 }
 
 
 .awayTeamScore h1 {
   font-size: 100px;
-  margin: 0 auto
+  margin: auto;
 }
