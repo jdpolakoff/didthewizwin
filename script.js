@@ -99,20 +99,20 @@ function getGame(){
 
         if (lastGame.h.ta === 'WAS' && parseInt(lastGame.h.s) < parseInt(lastGame.v.s)) {
           var text = `<h1><span class="nope">Nope.</span> The ${lastGame.h.tn} lost <span id="homeScore">00</span>-<span id="visitingScore">00</span> to the
-          ${lastGame.v.tn} on ${lastGameTime}. ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers
+          ${lastGame.v.tn} on ${lastGameTime} in ${lastGame.ac}. ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers
           with ${lastGame.ptsls.pl[0].val} points. The Wizards are now ${lastGame.h.re} on the season.</h1>`
           $(text).hide().appendTo('.scoreboard').delay(200).fadeIn(1000)
           $('.sadWall').fadeIn(1000)
         } else if (lastGame.v.ta === 'WAS' && parseInt(lastGame.v.s) < parseInt(lastGame.h.s)){
           var text = `<h1><span class="nope">Nope.</span> The ${lastGame.v.tn} lost
            <span id="visitingScore">00</span>-<span id="homeScore">00</span> to the ${lastGame.h.tn}
-            on ${lastGameTime}. ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers
+            on ${lastGameTime} in ${lastGame.ac}. ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers
             with ${lastGame.ptsls.pl[0].val} points. The Wizards are now ${lastGame.v.re} on the season.</h1>`
             $(text).hide().appendTo('.scoreboard').delay(200).fadeIn(1000)
             $('.sadWall').fadeIn(1000)
         } else if (lastGame.h.ta === 'WAS' && parseInt(lastGame.h.s) > parseInt(lastGame.v.s)) {
             var text = `<h1><span class="nope">Yep!</span> The ${lastGame.h.tn} beat the ${lastGame.v.tn}
-            <span id="homeScore">00</span>-<span id="visitingScore">00</span> on ${lastGameTime}.
+            <span id="homeScore">00</span>-<span id="visitingScore">00</span> on ${lastGameTime} in ${lastGame.ac}.
             ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers with ${lastGame.ptsls.pl[0].val}
             points. The Wizards are now ${lastGame.h.re} on the season.</h1>`
             $(text).hide().appendTo('.scoreboard').delay(200).fadeIn(1000)
