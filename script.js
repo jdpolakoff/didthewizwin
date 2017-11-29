@@ -38,8 +38,15 @@ function getGame(){
       $('.hidden').show()
       $('body').css('background', 'linear-gradient(-90deg, #002B5C, #E31837, #C4CED4)')
       $('.scowlWall').fadeIn(1000)
-      var text = `<h1><span class="nope">Game underway.</span> We're in quarter number ${game[0].period.current} at the ${game[0].arena.name} in ${game[0].arena.city}:</h1>`
-      console.log(text)
+
+      if (game[0].period.isHalftime === true) {
+        var text = `<h1><span class="nope">Game underway.</span> We're at halftime at the ${game[0].arena.name} in ${game[0].arena.city}:</h1>`
+      } else if (game[0].period !== 2 && game[0].period.isEndOfPeriod === true){
+        var text = `<h1><span class="nope">Game underway.</span> We're through with quarter number ${game[0].period.current} at the ${game[0].arena.name} in ${game[0].arena.city}:</h1>`
+    } else {
+      var text = `<h1><span class="nope">Game underway.</span> We have ${game[0].clock} left in quarter number ${game[0].period.current} at the ${game[0].arena.name} in ${game[0].arena.city}:</h1>`
+    }
+
       $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
 
       $('.homeTeamName').append(`${game[0].hTeam.triCode}`)
@@ -93,45 +100,46 @@ function getGame(){
 
         $('.loading').hide()
         $('.scoreboard').show()
-        $('.hidden').hide()
+        $('.hidden').show()
 
         $('body').css('background', 'linear-gradient(-90deg, #002B5C, #E31837, #C4CED4)')
 
         if (lastGame.h.ta === 'WAS' && parseInt(lastGame.h.s) < parseInt(lastGame.v.s)) {
-          var text = `<h1><span class="nope">Nope.</span> The ${lastGame.h.tn} lost <span id="homeScore">00</span>-<span id="visitingScore">00</span> to the
+          var text = `<h1 class="summary"><span class="nope">Nope.</span> The ${lastGame.h.tn} lost to the
           ${lastGame.v.tn} on ${lastGameTime} in ${lastGame.ac}. ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers
           with ${lastGame.ptsls.pl[0].val} points. The Wizards are now ${lastGame.h.re} on the season.</h1>`
-          $(text).hide().appendTo('.scoreboard').delay(200).fadeIn(1000)
+          $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
           $('.sadWall').fadeIn(1000)
         } else if (lastGame.v.ta === 'WAS' && parseInt(lastGame.v.s) < parseInt(lastGame.h.s)){
-          var text = `<h1><span class="nope">Nope.</span> The ${lastGame.v.tn} lost
-           <span id="visitingScore">00</span>-<span id="homeScore">00</span> to the ${lastGame.h.tn}
+          var text = `<h1 class="summary"><span class="nope">Nope.</span> The ${lastGame.v.tn} lost to the ${lastGame.h.tn}
             on ${lastGameTime} in ${lastGame.ac}. ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers
             with ${lastGame.ptsls.pl[0].val} points. The Wizards are now ${lastGame.v.re} on the season.</h1>`
-            $(text).hide().appendTo('.scoreboard').delay(200).fadeIn(1000)
+            $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
             $('.sadWall').fadeIn(1000)
         } else if (lastGame.h.ta === 'WAS' && parseInt(lastGame.h.s) > parseInt(lastGame.v.s)) {
-            var text = `<h1><span class="nope">Yep!</span> The ${lastGame.h.tn} beat the ${lastGame.v.tn}
-            <span id="homeScore">00</span>-<span id="visitingScore">00</span> on ${lastGameTime} in ${lastGame.ac}.
-            ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers with ${lastGame.ptsls.pl[0].val}
+            var text = `<h1 class="summary"><span class="nope">Yep!</span> The ${lastGame.h.tn} beat the ${lastGame.v.tn} on ${lastGameTime}
+            in ${lastGame.ac}. ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers with ${lastGame.ptsls.pl[0].val}
             points. The Wizards are now ${lastGame.h.re} on the season.</h1>`
-            $(text).hide().appendTo('.scoreboard').delay(200).fadeIn(1000)
+            $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
             $('.happyWall').fadeIn(1000)
         } else if (lastGame.v.ta === 'WAS' && parseInt(lastGame.v.s) > parseInt(lastGame.h.s)){
-            var text = `<h1><span class="nope">Yep!</span> The ${lastGame.v.tn}
-            beat the ${lastGame.h.tn} <span id="visitingScore">00</span>-<span id="homeScore">00</span>
-            on ${lastGameTime} in ${lastGame.ac}. ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers
-            with ${lastGame.ptsls.pl[0].val} points. The Wizards are now ${lastGame.v.re} on the season.</h1>`
-            $(text).hide().appendTo('.scoreboard').delay(200).fadeIn(1000)
+            var text = `<h1 class="summary"><span class="nope">Yep!</span> The ${lastGame.v.tn} beat the ${lastGame.h.tn} on ${lastGameTime} in ${lastGame.ac}.
+             ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers with ${lastGame.ptsls.pl[0].val} points. The Wizards are now ${lastGame.v.re} on the season.</h1>`
+            $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
             $('.happyWall').fadeIn(1000)
         }
 
-        // $('.homeTeamName').append(`<h1>${lastGame.h.ta}</h1>`)
-        // // $('.awayTeamName').append(`<h1>${lastGame.v.ta}</h1>`)
-        // $('.homeTeamScore').append(`<h1><span id="homeScore">00</span></h1>`)
-        // $('.awayTeamScore').append(`<h1><span id="visitingScore">00</span></h1>`)
-        $('#homeScore').delay(1500).animateNumber({ number: parseInt(lastGame.h.s)})
-        $('#visitingScore').delay(1500).animateNumber({ number: parseInt(lastGame.v.s)})
+        $('.homeTeamName').append(`${lastGame.h.ta}`)
+        $('.awayTeamName').append(`${lastGame.v.ta}`)
+
+        $('.homeTeamScore').append(`<h1><span id="homeScore">00</span></h1>`)
+        $('.awayTeamScore').append(`<h1><span id="visitingScore">00</span></h1>`)
+
+        $('.home').delay(400).fadeIn(1000)
+        $('.away').delay(400).fadeIn(1000)
+
+        $('#homeScore').delay(1000).animateNumber({ number: parseInt(lastGame.h.s)})
+        $('#visitingScore').delay(1000).animateNumber({ number: parseInt(lastGame.v.s)})
       })
 
     }

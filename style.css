@@ -1,5 +1,33 @@
 @import url('https://fonts.googleapis.com/css?family=Lora');
 
+@font-face {
+  font-family: 'Digital';
+  src: url('./digital-7.ttf')
+}
+
+/*https://github.com/extempl/neon/blob/master/css/neon.css*/
+
+
+*[data-neon='basic'], *[data-neon='custom'] span {
+	color: #fff;
+	text-shadow:0 0  .1em rgba(255, 255, 255, .6),
+				0 0  .6em rgba(255, 255, 255, .2),
+				0 0 1.2em rgba(255, 255, 255, .4),
+				0 0 1.8em rgba(255, 255, 255, .6),
+				0 0 2.4em rgba(255, 255, 255, .8),
+				.02em .02em  .1em rgba(0, 0, 0, 1);
+}
+
+.summary {
+  text-align: center;
+}
+
+#homeScore, #visitingScore, .currentHomeScore, .currentVisitingScore {
+  font-family: 'Digital';
+  font-size: 80px;
+  color: white
+}
+
 body {
 font-family: 'Lora', serif;
 }
@@ -31,13 +59,11 @@ font-family: 'Lora', serif;
   margin-right: auto;*/
 }
 
-.currentHomeScore, .currentVisitingScore {
-  margin: 0 auto;
-  font-size: 72px
-}
 
 .homeTeamName, .awayTeamName {
-  font-size: 40px
+  font-size: 50px;
+  font-family: 'Digital';
+  color: white;
 }
 
 .sadWall, .happyWall, .scowlWall {
@@ -85,16 +111,18 @@ font-family: 'Lora', serif;
 
 
 .home {
-  border: 2px solid black;
+  /*border: 2px solid black;*/
   width: 45%;
+  height: 50%;
   float: left;
   text-align: center;
   display: none
 }
 
 .away {
-  border: 2px solid black;
+  /*border: 2px solid black;*/
   width: 45%;
+  height: 50%;
   float: right;
   text-align: center;
   display: none
