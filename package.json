@@ -1,8 +1,0 @@
-{
-  "name": "didwizwin",
-  "description": "well, did they?",
-  "version": "1.0.0",
-  "engines": {
-    "node": "8.2.1"
-  }
-}
