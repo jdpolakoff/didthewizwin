@@ -40,15 +40,7 @@ font-family: 'Lora', serif;
   font-size: 40px
 }
 
-.toptext {
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-.sadWall, .happyWall {
+.sadWall, .happyWall, .scowlWall {
   margin: 0 auto;
   height: 200px;
   display: none;
@@ -72,7 +64,7 @@ font-family: 'Lora', serif;
 }
 
 .scoreboard {
-  margin-top: 10%;
+  margin-top: 5%;
   margin-right: auto;
   margin-left: auto;
   /*border: 2px solid black;*/
@@ -96,14 +88,16 @@ font-family: 'Lora', serif;
   border: 2px solid black;
   width: 45%;
   float: left;
-  text-align: center
+  text-align: center;
+  display: none
 }
 
 .away {
   border: 2px solid black;
   width: 45%;
   float: right;
-  text-align: center
+  text-align: center;
+  display: none
 }
 
 .home span, .away span {

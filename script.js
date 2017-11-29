@@ -27,7 +27,8 @@ function getGame(){
       console.log(game)
     })
 
-    if (typeof game !== 'undefined' && game[0].isGameActivated !== false) {
+    if (typeof game !== 'undefined'){
+       // && game[0].isGameActivated !== false) {
 
       console.log(game[0])
 
@@ -38,15 +39,23 @@ function getGame(){
       $('.scoreboard').show()
       $('.hidden').show()
       $('body').css('background', 'linear-gradient(-90deg, #002B5C, #E31837, #C4CED4)')
-      $('.text').append(`<h1 class="toptext"><span class="nope">Game underway.</span> We're in quarter number ${game[0].period.current} at the ${game[0].arena.name} in ${game[0].arena.city}:</h1>`)
+      $('.scowlWall').fadeIn(1000)
+      var text = `<h1><span class="nope">Game underway.</span> We're in quarter number ${game[0].period.current} at the ${game[0].arena.name} in ${game[0].arena.city}:</h1>`
+      console.log(text)
+      $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
 
       $('.homeTeamName').append(`${game[0].hTeam.triCode}`)
       $('.awayTeamName').append(`${game[0].vTeam.triCode}`)
+
       $('.homeTeamScore').append(`<h1><span class="currentHomeScore">00</span></h1>`)
       $('.awayTeamScore').append(`<h1><span class="currentVisitingScore">00</span></h1>`)
 
-      $('.currentHomeScore').animateNumber({ number: parseInt(game[0].hTeam.score) })
-      $('.currentVisitingScore').animateNumber({ number: parseInt(game[0].vTeam.score) })
+      $('.home').delay(400).fadeIn(1000)
+      $('.away').delay(400).fadeIn(1000)
+
+
+      $('.currentHomeScore').delay(1000).animateNumber({ number: parseInt(game[0].hTeam.score) })
+      $('.currentVisitingScore').delay(1000).animateNumber({ number: parseInt(game[0].vTeam.score) })
 
     } else {
 
