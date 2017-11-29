@@ -105,28 +105,56 @@ function getGame(){
         $('body').css('background', 'linear-gradient(-90deg, #002B5C, #E31837, #C4CED4)')
 
         if (lastGame.h.ta === 'WAS' && parseInt(lastGame.h.s) < parseInt(lastGame.v.s)) {
-          var text = `<h1 class="summary"><span class="nope">Nope.</span> The ${lastGame.h.tn} lost to the
-          ${lastGame.v.tn} on ${lastGameTime} in ${lastGame.ac}. ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers
-          with ${lastGame.ptsls.pl[0].val} points. The Wizards are now ${lastGame.h.re} on the season.</h1>`
-          $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-          $('.sadWall').fadeIn(1000)
+                if (lastGame.ptsls.pl.length > 0) {
+                var text = `<h1 class="summary"><span class="nope">Nope.</span> The ${lastGame.h.tn} lost to the
+                ${lastGame.v.tn} on ${lastGameTime} in ${lastGame.ac}. ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers
+                with ${lastGame.ptsls.pl[0].val} points. The Wizards are now ${lastGame.h.re} on the season.</h1>`
+                $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
+                $('.sadWall').fadeIn(1000)
+              } else {
+                var text = `<h1 class="summary"><span class="nope">Nope.</span> The ${lastGame.h.tn} lost to the
+                ${lastGame.v.tn} on ${lastGameTime} in ${lastGame.ac}. The Wizards are now ${lastGame.h.re} on the season.</h1>`
+                $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
+                $('.sadWall').fadeIn(1000)
+              }
         } else if (lastGame.v.ta === 'WAS' && parseInt(lastGame.v.s) < parseInt(lastGame.h.s)){
-          var text = `<h1 class="summary"><span class="nope">Nope.</span> The ${lastGame.v.tn} lost to the ${lastGame.h.tn}
-            on ${lastGameTime} in ${lastGame.ac}. ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers
-            with ${lastGame.ptsls.pl[0].val} points. The Wizards are now ${lastGame.v.re} on the season.</h1>`
-            $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-            $('.sadWall').fadeIn(1000)
+              if (lastGame.ptsls.pl.length > 0) {
+                  var text = `<h1 class="summary"><span class="nope">Nope.</span> The ${lastGame.v.tn} lost to the ${lastGame.h.tn}
+                  on ${lastGameTime} in ${lastGame.ac}. ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers
+                  with ${lastGame.ptsls.pl[0].val} points. The Wizards are now ${lastGame.v.re} on the season.</h1>`
+                  $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
+                  $('.sadWall').fadeIn(1000)
+                } else {
+                  var text = `<h1 class="summary"><span class="nope">Nope.</span> The ${lastGame.v.tn} lost to the ${lastGame.h.tn}
+                  on ${lastGameTime} in ${lastGame.ac}. The Wizards are now ${lastGame.v.re} on the season.</h1>`
+                  $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
+                  $('.sadWall').fadeIn(1000)
+                }
         } else if (lastGame.h.ta === 'WAS' && parseInt(lastGame.h.s) > parseInt(lastGame.v.s)) {
-            var text = `<h1 class="summary"><span class="nope">Yep!</span> The ${lastGame.h.tn} beat the ${lastGame.v.tn} on ${lastGameTime}
-            in ${lastGame.ac}. ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers with ${lastGame.ptsls.pl[0].val}
-            points. The Wizards are now ${lastGame.h.re} on the season.</h1>`
-            $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-            $('.happyWall').fadeIn(1000)
+              if (lastGame.ptsls.pl.length > 0) {
+                  var text = `<h1 class="summary"><span class="nope">Yep!</span> The ${lastGame.h.tn} beat the ${lastGame.v.tn} on ${lastGameTime}
+                  in ${lastGame.ac}. ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers with ${lastGame.ptsls.pl[0].val}
+                  points. The Wizards are now ${lastGame.h.re} on the season.</h1>`
+                  $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
+                  $('.happyWall').fadeIn(1000)
+                } else {
+                  var text = `<h1 class="summary"><span class="nope">Yep!</span> The ${lastGame.h.tn} beat the ${lastGame.v.tn} on ${lastGameTime}
+                  in ${lastGame.ac}. The Wizards are now ${lastGame.h.re} on the season.</h1>`
+                  $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
+                  $('.happyWall').fadeIn(1000)
+                }
         } else if (lastGame.v.ta === 'WAS' && parseInt(lastGame.v.s) > parseInt(lastGame.h.s)){
-            var text = `<h1 class="summary"><span class="nope">Yep!</span> The ${lastGame.v.tn} beat the ${lastGame.h.tn} on ${lastGameTime} in ${lastGame.ac}.
-             ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers with ${lastGame.ptsls.pl[0].val} points. The Wizards are now ${lastGame.v.re} on the season.</h1>`
-            $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-            $('.happyWall').fadeIn(1000)
+              if (lastGame.ptsls.pl.length > 0) {
+                  var text = `<h1 class="summary"><span class="nope">Yep!</span> The ${lastGame.v.tn} beat the ${lastGame.h.tn} on ${lastGameTime} in ${lastGame.ac}.
+                   ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers with ${lastGame.ptsls.pl[0].val} points. The Wizards are now ${lastGame.v.re} on the season.</h1>`
+                  $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
+                  $('.happyWall').fadeIn(1000)
+                } else {
+                  var text = `<h1 class="summary"><span class="nope">Yep!</span> The ${lastGame.v.tn} beat the ${lastGame.h.tn} on ${lastGameTime} in ${lastGame.ac}.
+                  The Wizards are now ${lastGame.v.re} on the season.</h1>`
+                  $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
+                  $('.happyWall').fadeIn(1000)
+                }
         }
 
         $('.homeTeamName').append(`${lastGame.h.ta}`)
