@@ -1,5 +1,4 @@
 var game
-$('.rest').fadeIn(1200)
 
 
 $(document).ready(function(){
@@ -127,8 +126,8 @@ function getGame(){
         // // $('.awayTeamName').append(`<h1>${lastGame.v.ta}</h1>`)
         // $('.homeTeamScore').append(`<h1><span id="homeScore">00</span></h1>`)
         // $('.awayTeamScore').append(`<h1><span id="visitingScore">00</span></h1>`)
-        $('#homeScore').animateNumber({ number: parseInt(lastGame.h.s)})
-        $('#visitingScore').animateNumber({ number: parseInt(lastGame.v.s)})
+        $('#homeScore').delay(1000).animateNumber({ number: parseInt(lastGame.h.s)})
+        $('#visitingScore').delay(1000).animateNumber({ number: parseInt(lastGame.v.s)})
       })
 
     }
