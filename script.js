@@ -11,7 +11,7 @@ function getGame(){
   var day = date.getDate()
   var month = date.getMonth() + 1
   var year = date.getYear() + 1900
-  var url = `https://cors-anywhere.herokuapp.com/http://data.nba.net/10s/prod/v2/${year}${month}${day}/scoreboard.json`
+  var url = `https://cors-anywhere.herokuapp.com/http://data.nba.net/10s/prod/v2/${year}${month}29/scoreboard.json`
   $.ajax({
     url: url,
     type: 'get',
@@ -26,7 +26,7 @@ function getGame(){
       console.log(game)
     })
 
-    if (typeof game[0] !== 'undefined' && game[0].isGameActivated !== false) {
+    if (typeof game !== 'undefined' && game[0].isGameActivated !== false) {
 
       console.log(game[0])
 
