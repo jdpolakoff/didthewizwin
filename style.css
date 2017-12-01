@@ -131,3 +131,9 @@ body {
 .home span, .away span {
   vertical-align: middle;
 }
+
+@media only screen and (max-width: 600px)  {
+  .hidden {
+    width: 70%;
+  }
+}
