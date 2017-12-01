@@ -25,6 +25,12 @@ body {
   text-align: center;
 }
 
+.tweetButton {
+  display: none;
+  margin-left: auto;
+  margin-right: auto
+}
+
 #homeScore, #visitingScore, .currentHomeScore, .currentVisitingScore {
   font-family: 'Digital';
   font-size: 80px;

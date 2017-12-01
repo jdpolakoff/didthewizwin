@@ -50,6 +50,7 @@ function getGame(){
       $('.hidden').show()
       $('body').css('background', backgroundColor)
       $('.scowlWall').fadeIn(1000)
+      $('.tweetButton').show()
 
       if (game[0].period.isHalftime === true) {
         var text = `<h1><span class="nope">Game underway.</span> We're at halftime at the ${game[0].arena.name} in ${game[0].arena.city}:</h1>`
@@ -75,6 +76,20 @@ function getGame(){
 
       $('.currentHomeScore').delay(1000).animateNumber({ number: parseInt(game[0].hTeam.score) })
       $('.currentVisitingScore').delay(1000).animateNumber({ number: parseInt(game[0].vTeam.score) })
+
+      var linkText = $('.text').text()
+      linkText = linkText.split(' ')
+      var filteredLinkText = linkText.filter(function(char){
+        return char !== ''
+      })
+      console.log(filteredLinkText.join(' '))
+
+      var tweetHtml = `<a href="https://twitter.com/intent/tweet?text=${filteredLinkText.join(' ')}"
+      class="twitter-share-button" data-show-count="true" data-size="large" target="_blank">Tweet</a
+      ><script async src="https://platform.twitter.com/widgets.js"
+      charset="utf-8"></script>`
+      $(tweetHtml).hide().appendTo('.tweetButton')
+      $('.tweetButton').delay(500).fadeIn(1000)
 
     } else {
 
@@ -118,8 +133,8 @@ function getGame(){
         $('.loading').hide()
         $('.scoreboard').show()
         $('.hidden').show()
-
         $('body').css('background', backgroundColor)
+        // $('.tweetButton').show()
 
         if (lastGame.h.ta === 'WAS' && parseInt(lastGame.h.s) < parseInt(lastGame.v.s)) {
                 if (lastGame.ptsls.pl.length > 0) {
@@ -185,6 +200,21 @@ function getGame(){
 
         $('#homeScore').delay(1000).animateNumber({ number: parseInt(lastGame.h.s)})
         $('#visitingScore').delay(1000).animateNumber({ number: parseInt(lastGame.v.s)})
+
+        var linkText = $('.text').text()
+        linkText = linkText.split(' ')
+        var filteredLinkText = linkText.filter(function(char){
+          return char !== ''
+        })
+        console.log(filteredLinkText.join(' '))
+
+        var tweetHtml = `<a href="https://twitter.com/intent/tweet?text=${filteredLinkText.join(' ')}"
+        class="twitter-share-button" data-show-count="true" data-size="large" target="_blank">Tweet</a
+        ><script async src="https://platform.twitter.com/widgets.js"
+        charset="utf-8"></script>`
+        $(tweetHtml).hide().appendTo('.tweetButton')
+        $('.tweetButton').delay(500).fadeIn(1000)
+
       })
 
     }
