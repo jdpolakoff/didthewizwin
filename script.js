@@ -8,10 +8,22 @@ $(document).ready(function(){
 
 function getGame(){
   var date = Date.today()
-  var day = date.getDate()
-  var month = date.getMonth() + 1
+
+  if (date.getDate().toString().length === 1) {
+    var day = `0${date.getDate().toString()}`
+    console.log(day)
+  } else {
+    day = date.getDate()
+  }
+
+  if (date.getMonth().toString().length === 1) {
+    var month = `0${date.getMonth() + 1}`
+  } else {
+    month = date.getMonth() + 1
+  }
+
   var year = date.getYear() + 1900
-  var url = `https://cors-anywhere.herokuapp.com/http://data.nba.net/10s/prod/v2/${year}${month}29/scoreboard.json`
+  var url = `https://cors-anywhere.herokuapp.com/http://data.nba.net/10s/prod/v2/${year}${month}${day}/scoreboard.json`
   $.ajax({
     url: url,
     type: 'get',
