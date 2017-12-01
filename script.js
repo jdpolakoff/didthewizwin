@@ -82,7 +82,6 @@ function getGame(){
       }).done((response) => {
         console.log(months[months.indexOf(Date.today().toString('MMMM')) - 1])
         for (i = 0; i < response.lscd.length; i++){
-          for (i = 0; i < months.length; i++)
           if (response.lscd[i].mscd.mon === Date.today().toString('MMMM')
           || response.lscd[i].mscd.mon === months[months.indexOf(Date.today().toString('MMMM')) - 1]) {
             var filter = response.lscd[i].mscd.g.filter(function(game){
