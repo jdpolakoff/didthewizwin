@@ -26,7 +26,7 @@ function getGame(){
       console.log(game)
     })
 
-    if (typeof game !== 'undefined' && game[0].isGameActivated !== false) {
+    if (typeof game[0] !== 'undefined' && game[0].isGameActivated !== false) {
 
       console.log(game[0])
 
@@ -69,6 +69,7 @@ function getGame(){
       var url2 = `https://cors-anywhere.herokuapp.com/http://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2017/league/00_full_schedule.json`
       var lastGame
       var arr = []
+      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
       $.ajax({
         url: url2,
@@ -79,8 +80,11 @@ function getGame(){
           $('.loading').show()
         }
       }).done((response) => {
+        console.log(months[months.indexOf(Date.today().toString('MMMM')) - 1])
         for (i = 0; i < response.lscd.length; i++){
-          if (response.lscd[i].mscd.mon === Date.today().toString('MMMM') || parseInt(response.lscd[i].mscd.mon) + 1 === parseInt(Date.today().toString('MMMM')) || parseInt(response.lscd[i].mscd.mon) - 1 === parseInt(Date.today().toString('MMMM')))  {
+          for (i = 0; i < months.length; i++)
+          if (response.lscd[i].mscd.mon === Date.today().toString('MMMM')
+          || response.lscd[i].mscd.mon === months[months.indexOf(Date.today().toString('MMMM')) - 1]) {
             var filter = response.lscd[i].mscd.g.filter(function(game){
               return game.h.tn === 'Wizards' || game.v.tn === 'Wizards'
             })
