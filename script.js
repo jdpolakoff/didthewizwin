@@ -38,7 +38,7 @@ function getGame(){
       console.log(game)
     })
 
-    if (typeof game[0] !== 'undefined' && game[0].isGameActivated !== false) {
+    if (typeof game !== 'undefined' && game[0].isGameActivated !== false) {
 
       console.log(game[0])
 
@@ -59,7 +59,7 @@ function getGame(){
     } else if (game[0].period === 4 && game[0].period.isEndOfPeriod === true) {
       var text = `<h1>After four quarters at the ${game[0].arena.name} in ${game[0].arena.city}. ${game[0].hTeam.triCode}: ${game[0].hTeam.score}, ${game[0].vTeam.triCode}: ${game[0].vTeam.score}.</h1>`
     } else {
-      if (game[0].clock.include('.')) {
+      if (game[0].clock.includes('.')) {
         var text = `<h1><span class="nope">Game underway.</span> We have ${game[0].clock} seconds left in quarter number ${game[0].period.current} at the ${game[0].arena.name} in ${game[0].arena.city}. ${game[0].hTeam.triCode}: ${game[0].hTeam.score}, ${game[0].vTeam.triCode}: ${game[0].vTeam.score}.</h1>`
       } else {
         var text = `<h1><span class="nope">Game underway.</span> We have ${game[0].clock} left in quarter number ${game[0].period.current} at the ${game[0].arena.name} in ${game[0].arena.city}. ${game[0].hTeam.triCode}: ${game[0].hTeam.score}, ${game[0].vTeam.triCode}: ${game[0].vTeam.score}.</h1>`
