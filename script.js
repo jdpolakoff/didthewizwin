@@ -209,7 +209,7 @@ function getGame(){
         console.log(filteredLinkText.join(' '))
 
         var tweetHtml = `<a href="https://twitter.com/intent/tweet?text=${filteredLinkText.join(' ').trim()}"
-        class="twitter-share-button" data-show-count="true" data-size="large" target="_blank">Tweet</a
+        class="twitter-share-button" data-show-count="true" data-size="large" data-hashtags="Wizards" data-via="Did_The_Wiz_Win">Tweet</a
         ><script async src="https://platform.twitter.com/widgets.js"
         charset="utf-8"></script>`
         $(tweetHtml).hide().appendTo('.tweetButton')
