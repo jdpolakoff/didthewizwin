@@ -53,13 +53,13 @@ function getGame(){
       $('.tweetButton').show()
 
       if (game[0].period.isHalftime === true) {
-        var text = `<h1><span class="nope">Game underway.</span> We're at halftime at the ${game[0].arena.name} in ${game[0].arena.city}:</h1>`
+        var text = `<h1><span class="nope">Game underway.</span> We're at halftime at the ${game[0].arena.name} in ${game[0].arena.city}. ${game[0].hTeam.triCode}: ${game[0].hTeam.score}, ${game[0].vTeam.triCode}: ${game[0].vTeam.score}.</h1>`
       } else if (game[0].period !== 2 && game[0].period !== 4 && game[0].period.isEndOfPeriod === true){
-        var text = `<h1><span class="nope">Game underway.</span> We're through with quarter number ${game[0].period.current} at the ${game[0].arena.name} in ${game[0].arena.city}:</h1>`
+        var text = `<h1><span class="nope">Game underway.</span> We're through with quarter number ${game[0].period.current} at the ${game[0].arena.name} in ${game[0].arena.city}. ${game[0].hTeam.triCode}: ${game[0].hTeam.score}, ${game[0].vTeam.triCode}: ${game[0].vTeam.score}.</h1>`
     } else if (game[0].period === 4 && game[0].period.isEndOfPeriod === true) {
-      var text = `<h1>After four quarters at the ${game[0].arena.name} in ${game[0].arena.city}:</h1>`
+      var text = `<h1>After four quarters at the ${game[0].arena.name} in ${game[0].arena.city}. ${game[0].hTeam.triCode}: ${game[0].hTeam.score}, ${game[0].vTeam.triCode}: ${game[0].vTeam.score}.</h1>`
     } else {
-      var text = `<h1><span class="nope">Game underway.</span> We have ${game[0].clock} left in quarter number ${game[0].period.current} at the ${game[0].arena.name} in ${game[0].arena.city}:</h1>`
+      var text = `<h1><span class="nope">Game underway.</span> We have ${game[0].clock} left in quarter number ${game[0].period.current} at the ${game[0].arena.name} in ${game[0].arena.city}. ${game[0].hTeam.triCode}: ${game[0].hTeam.score}, ${game[0].vTeam.triCode}: ${game[0].vTeam.score}.</h1>`
     }
 
       $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
