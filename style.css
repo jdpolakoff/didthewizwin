@@ -1,10 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Lora');
+@import url('https://fonts.googleapis.com/css?family=Asap+Condensed');
 
 @font-face {
   font-family: 'Digital';
   src: url('./digital-7.ttf')
 }
 
+body {
+  font-family: 'Asap Condensed', sans-serif;
+}
 /*https://github.com/extempl/neon/blob/master/css/neon.css*/
 
 
@@ -25,12 +28,9 @@
 #homeScore, #visitingScore, .currentHomeScore, .currentVisitingScore {
   font-family: 'Digital';
   font-size: 80px;
-  color: white
+  color: black;
 }
 
-body {
-font-family: 'Lora', serif;
-}
 
 .nope {
   font-size: 50px
@@ -63,7 +63,7 @@ font-family: 'Lora', serif;
 .homeTeamName, .awayTeamName {
   font-size: 50px;
   font-family: 'Digital';
-  color: white;
+  color: black;
 }
 
 .sadWall, .happyWall, .scowlWall {

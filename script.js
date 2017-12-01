@@ -1,5 +1,5 @@
 var game
-
+var backgroundColor = 'linear-gradient(-90deg, #002B5C, #C4CED4, #E31837)'
 
 $(document).ready(function(){
   getGame()
@@ -48,7 +48,7 @@ function getGame(){
       $('.container').show()
       $('.scoreboard').show()
       $('.hidden').show()
-      $('body').css('background', 'linear-gradient(-90deg, #002B5C, #E31837, #C4CED4)')
+      $('body').css('background', backgroundColor)
       $('.scowlWall').fadeIn(1000)
 
       if (game[0].period.isHalftime === true) {
@@ -119,7 +119,7 @@ function getGame(){
         $('.scoreboard').show()
         $('.hidden').show()
 
-        $('body').css('background', 'linear-gradient(-90deg, #002B5C, #E31837, #C4CED4)')
+        $('body').css('background', backgroundColor)
 
         if (lastGame.h.ta === 'WAS' && parseInt(lastGame.h.s) < parseInt(lastGame.v.s)) {
                 if (lastGame.ptsls.pl.length > 0) {
