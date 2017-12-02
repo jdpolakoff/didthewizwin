@@ -24,7 +24,7 @@ function getGame(){
   }
 
   var year = date.getYear() + 1900
-  var url = `https://cors-anywhere.herokuapp.com/http://data.nba.net/10s/prod/v2/${year}${month}${day}/scoreboard.json`
+  var url = `https://cors-anywhere.herokuapp.com/http://data.nba.net/10s/prod/v2/${year}${month}01/scoreboard.json`
   $.ajax({
     url: url,
     type: 'get',
@@ -34,16 +34,16 @@ function getGame(){
       $('.loading').show()
     }
   }).done((response) => {
+    console.log(response)
     game = response.games.filter(function(game){
       return game.hTeam.triCode === 'WAS' || game.vTeam.triCode === 'WAS'
       console.log(game)
     })
 
-    if (typeof game !== 'undefined' && game[0].isGameActivated !== false) {
+    if (typeof game === 'object' && game.isGameActivated === false) {
 
+      console.log(typeof(game[0]))
       console.log(game[0])
-
-     // && game[0].isGameActivated === false) {
 
       $('.loading').hide()
       $('.container').show()
@@ -129,6 +129,7 @@ function getGame(){
             var selectedMonth = response.lscd.filter(function(item){
               return item.mscd.mon === months[months.indexOf(Date.today().toString('MMMM')) - 1]
             })
+            console.log(selectedMonth)
             var filter = selectedMonth.mscd.g.filter(function(game){
               return game.h.tn === 'Wizards' || game.v.tn === 'Wizards'
             })
