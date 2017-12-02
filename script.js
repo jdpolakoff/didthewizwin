@@ -130,7 +130,7 @@ function getGame(){
               return item.mscd.mon === months[months.indexOf(Date.today().toString('MMMM')) - 1]
             })
             console.log(selectedMonth)
-            var filter = selectedMonth.mscd.g.filter(function(game){
+            var filter = selectedMonth[0].mscd.g.filter(function(game){
               return game.h.tn === 'Wizards' || game.v.tn === 'Wizards'
             })
             for (i = 0; i < filter.length; i++) {
