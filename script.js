@@ -1,5 +1,6 @@
 var game
 var backgroundColor = 'linear-gradient(-90deg, #002B5C, #C4CED4, #E31837)'
+var selectedMonth
 
 $(document).ready(function(){
   getGame()
@@ -23,7 +24,7 @@ function getGame(){
   }
 
   var year = date.getYear() + 1900
-  var url = `https://cors-anywhere.herokuapp.com/http://data.nba.net/10s/prod/v2/${year}${month}${day}/scoreboard.json`
+  var url = `https://cors-anywhere.herokuapp.com/http://data.nba.net/10s/prod/v2/20180103/scoreboard.json`
   $.ajax({
     url: url,
     type: 'get',
@@ -38,7 +39,7 @@ function getGame(){
       console.log(game)
     })
 
-    if (typeof game !== 'undefined' && game[0].isGameActivated !== false) {
+    if (typeof game !== 'undefined') && game[0].isGameActivated !== false) {
 
       console.log(game[0])
 
@@ -113,8 +114,7 @@ function getGame(){
       }).done((response) => {
         console.log(months[months.indexOf(Date.today().toString('MMMM')) - 1])
         for (i = 0; i < response.lscd.length; i++){
-          if (response.lscd[i].mscd.mon === Date.today().toString('MMMM')
-          || response.lscd[i].mscd.mon === months[months.indexOf(Date.today().toString('MMMM')) - 1]) {
+          if (response.lscd[i].mscd.mon === Date.today().toString('MMMM')) {
             var filter = response.lscd[i].mscd.g.filter(function(game){
               return game.h.tn === 'Wizards' || game.v.tn === 'Wizards'
             })
@@ -123,10 +123,24 @@ function getGame(){
                 arr.push(filter[i])
               }
             }
+            if (arr.length > 0) {
             var lastGame = arr.pop()
-            console.log(lastGame)
+          } else {
+            var selectedMonth = response.lscd.filter(function(item){
+              return item.mscd.mon === months[months.indexOf(Date.today().toString('MMMM')) - 1]
+            })
+            var filter = selectedMonth.mscd.g.filter(function(game){
+              return game.h.tn === 'Wizards' || game.v.tn === 'Wizards'
+            })
+            for (i = 0; i < filter.length; i++) {
+              if (filter[i].stt === 'Final') {
+                arr.push(filter[i])
+              }
+            }
+            var lastGame = arr.pop()
           }
         }
+      }
 
         var arr3 = []
         arr3.push(lastGame.gdte.split('-')[1])
