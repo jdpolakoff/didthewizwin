@@ -39,7 +39,7 @@ function getGame(){
       console.log(game)
     })
 
-    if (typeof game !== 'undefined') && game[0].isGameActivated !== false) {
+    if (typeof game !== 'undefined' && game[0].isGameActivated !== false) {
 
       console.log(game[0])
 
