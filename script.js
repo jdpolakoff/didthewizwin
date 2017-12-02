@@ -24,7 +24,7 @@ function getGame(){
   }
 
   var year = date.getYear() + 1900
-  var url = `https://cors-anywhere.herokuapp.com/http://data.nba.net/10s/prod/v2/20180103/scoreboard.json`
+  var url = `https://cors-anywhere.herokuapp.com/http://data.nba.net/10s/prod/v2/${year}${month}${day}/scoreboard.json`
   $.ajax({
     url: url,
     type: 'get',
