@@ -234,11 +234,6 @@ function getGame(){
         $(tweetHtml).hide().appendTo('.tweetButton')
         $('.tweetButton').delay(500).fadeIn(1000)
 
-        $('.showAll').click(function(){
-          $('.scoreboard').hide()
-          $('.all').show()
-        })
-
       })
 
     }
@@ -246,3 +241,91 @@ function getGame(){
   })
 
 }
+
+
+$('.showAll').click(function(){
+  $('.scoreboard').hide()
+  $('.all').show()
+  var url3 = `https://cors-anywhere.herokuapp.com/http://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2017/league/00_full_schedule.json`
+  var gameMap
+  var selects
+  var arr = []
+
+  $.ajax({
+    url: url3,
+    type: 'get',
+    dataType: 'json'
+        }).done((response) => {
+          console.log(response)
+          for (i = 0; i < response.lscd.length; i++) {
+            for (j = 0; j < response.lscd[i].mscd.g.length; j++){
+              if (response.lscd[i].mscd.g[j].h.tn === 'Wizards' || response.lscd[i].mscd.g[j].v.tn === 'Wizards') {
+                arr.push(response.lscd[i].mscd.g[j])
+                var filteredArr = arr.filter(function(game){
+                  return game.stt === 'Final'
+                })
+              }
+            }
+          }
+          console.log(filteredArr)
+          var mappedFilteredArr = filteredArr.map(function(game){
+            return `<option>${game.gdte} ${game.h.tn} at ${game.v.tn}</option>`
+          })
+          for (i = 0; i < mappedFilteredArr.length; i++){
+            $('.choose').append($(mappedFilteredArr[i]))
+          }
+        })
+      })
+
+        //     $('.all').append(`<select>${response.lscd[i].mon}</select>`)
+        //       var filter = response.lscd[i].mscd.g.filter(function(game){
+        //         return game.h.tn === 'Wizards' || game.v.tn === 'Wizards'
+        //       })
+        //       for (i = 0; i < filter.length; i++) {
+        //         if (filter[i].stt === 'Final') {
+        //           arr.push(filter[i])
+        //         }
+        //       }
+        //     }
+        //   })
+        // })
+
+          // var selects = response.lscd.map(function(item){
+          //   return `<select name="${item.mscd.mon}">
+          //   <option selected="selected" disabled="disabled">${item.mscd.mon}</option>
+          //   </select>`
+          // })
+
+          // var gameMap = response.lscd.map(function(item) {
+          //   return `<select name="${item.mscd.mon}">
+          //   <option selected="selected" disabled="disabled">${item.mscd.mon}</option>
+          //   <option>${item.mscd.g.gdte}</option>
+          //   </select>`
+          // })
+          // for (i = 0; i < response.lscd.length; i++) {
+          //   for (i = 0; i < selects.length; i++) {
+          //     console.log(($(selects[i])).attr('name'))
+          //     console.log(response.lscd[i].mscd.mon)
+          //     if ($(selects[i]).attr('name') === response.lscd[i].mscd.mon) {
+          //       console.log(gameMap)
+          //     }
+          //   }
+            // $('.all').append(gameMap)
+          // }
+
+
+
+          // for (i = 0; i < response.lscd.length; i++){
+          //   $('.all').append(`<select name="${response.lscd[i].mscd.mon}">
+          //   <option selected="selected" disabled="disabled">${response.lscd[i].mscd.mon}</option>
+          //   </select>`)
+          //   if (response.lscd[i].mscd.mon === $('select').attr('name')) {
+          //     $('select').append(`<option>hi</option>`)
+          //   }
+            // for (i = 0; i < response.lscd[i].mscd.g.length; i++) {
+            //   $('.sele')<option selected="selected">hi</option>
+            // }
+          // }
+          // console.log($('select').text())
+      //   })
+      // })
