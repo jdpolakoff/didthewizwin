@@ -234,6 +234,11 @@ function getGame(){
         $(tweetHtml).hide().appendTo('.tweetButton')
         $('.tweetButton').delay(500).fadeIn(1000)
 
+        $('.showAll').click(function(){
+          $('.scoreboard').hide()
+          $('.all').show()
+        })
+
       })
 
     }

@@ -21,6 +21,10 @@ body {
 				.02em .02em  .1em rgba(0, 0, 0, 1);
 }
 
+.all {
+  display: none
+}
+
 .summary {
   text-align: center;
 }
