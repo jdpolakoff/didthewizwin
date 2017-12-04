@@ -67,7 +67,7 @@ body {
 
 #sadWall, #happyWall, #scowlWall {
   margin: 0 auto;
-  height: 200px;
+  height: 150px;
   display: none;
   /*border: 2px solid black;*/
 }
