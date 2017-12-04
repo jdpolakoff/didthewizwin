@@ -279,6 +279,7 @@ function browseGames() {
   $('.tweetButton').hide()
   $('.intro').hide()
   $('.all').show()
+  $('.choose').append(`<option>Choose A Game</option>`)
   $('.choose').show()
   var url3 = `https://cors-anywhere.herokuapp.com/http://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2017/league/00_full_schedule.json`
   var gameMap
@@ -307,7 +308,6 @@ function browseGames() {
             return `<option value="${game.gdte.split('-')}">${gameArray[1]}/${gameArray[2]}/${gameArray[0]} ${game.v.tn} at ${game.h.tn}</option>`
           })
           console.log(mappedFilteredArr)
-          $('.choose').append(`<option>Choose A Game</option>`)
           for (i = 0; i < mappedFilteredArr.length; i++){
             $('.choose').append($(mappedFilteredArr[i]))
           }
