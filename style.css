@@ -285,7 +285,8 @@ color: white
     width: 70%;
   }
   .latest h3, .browse h3 {
-    border: none
+    border: none;
+    padding: 10%
   }
   .latest, .browse {
     width: 80%;
