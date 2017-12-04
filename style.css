@@ -29,6 +29,10 @@ body {
   text-align: center;
 }
 
+.img {
+  margin: 0 auto
+}
+
 .tweetButton {
   display: none;
   margin-left: auto;
@@ -54,21 +58,6 @@ body {
   margin-top: 20%;
 }
 
-.innercontain {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  position: relative;
-  visibility: hidden
-}
-
-.relative {
-  margin-top: 11%;
-  /*position: relative;*/
-  /*margin-left: auto;
-  margin-right: auto;*/
-}
-
 
 .homeTeamName, .awayTeamName {
   font-size: 50px;
@@ -76,14 +65,15 @@ body {
   color: black;
 }
 
-.sadWall, .happyWall, .scowlWall {
+#sadWall, #happyWall, #scowlWall {
   margin: 0 auto;
   height: 200px;
   display: none;
-  border: 2px solid black;
+  /*border: 2px solid black;*/
 }
 
 .loading {
+  display: none;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -95,6 +85,140 @@ body {
   width: 50%;
 }
 
+.homebtn {
+  display: none;
+  font-size: 18px;
+  height: 7%;
+  margin: 0 auto;
+  width: 15%;
+  text-align: center;
+}
+
+.homebtn h3 {
+padding-left: 15%;
+padding-right: 15%;
+padding-top: 5%;
+padding-bottom: 5%;
+border: 2px solid black;
+}
+
+.homebtn h3:hover {
+cursor: pointer;
+background-color: rgba(0, 43, 92, 0.1);
+color: white
+}
+
+.intro {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  /*border: 2px solid black;*/
+  height: 95%;
+  width: 50%;
+  text-align: center
+}
+
+.latest {
+  /*width: 45%;*/
+  height: 15%;
+  /*float: left;*/
+  text-align: center;
+  margin: auto;
+  /*border: 2px solid black;*/
+  vertical-align: center
+}
+
+.latest h3 {
+  font-size: 24px;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2%;
+  border: 2px solid black
+}
+
+.browse h3 {
+  font-size: 24px;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2%;
+  border: 2px solid black
+}
+
+.or {
+  font-family: 'Digital';
+  font-size: 24px;
+  color: black
+}
+
+.browse h3:hover, .latest h3:hover {
+  cursor: pointer;
+  background-color: rgba(0, 43, 92, 0.1);
+  color: white
+}
+
+.browse {
+  /*width: 45%;*/
+  height: 15%;
+  margin: auto;
+  /*float: left;*/
+  text-align: center;
+  /*border: 2px solid black;*/
+  vertical-align: center
+}
+
+.intro h1 {
+  font-size: 64px;
+  font-family: 'Digital';
+  color: black;
+}
+
+.intro h2 {
+  font-size: 52px;
+  font-family: 'Digital';
+  color: black
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.showAll {
+  display: none;
+  margin-top: 2%;
+  width: 50%;
+  height: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px
+}
+
+.all {
+  position: absolute;
+  display: none;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  /*border: 2px solid black;*/
+  height: 80%;
+  width: 50%;
+  text-align: center;
+}
+
+.logo {
+  height: 200px
+}
+
+.choose {
+  margin: 0 auto;
+  font-size: 24px
+}
 
 .loading img {
   margin-left: 25%;

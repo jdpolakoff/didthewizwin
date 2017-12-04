@@ -3,7 +3,32 @@ var backgroundColor = 'linear-gradient(-90deg, #002B5C, #C4CED4, #E31837)'
 var selectedMonth
 
 $(document).ready(function(){
+  $('body').css('background', backgroundColor)
+})
+
+$('.latest h3').click(function(){
+  $('.intro').hide()
+  $('.wall').hide()
+  $('.text').empty()
+  $('.homeTeamName').empty()
+  $('.awayTeamName').empty()
+  $('.homeTeamScore').empty()
+  $('.awayTeamScore').empty()
+  $('.tweetButton').empty()
+  $('body').css('background', 'white')
   getGame()
+})
+
+$('.browse h3').click(function(){
+  $('.tweetButton').empty()
+  browseGames()
+})
+
+$('.homebtn').click(function(){
+  $('.scoreboard').hide()
+  $('.all').hide()
+  $('.loading').hide()
+  $('.intro').show()
 })
 
 
@@ -50,8 +75,9 @@ function getGame(){
       $('.scoreboard').show()
       $('.hidden').show()
       $('body').css('background', backgroundColor)
-      $('.scowlWall').fadeIn(1000)
+      $('#scowlWall').fadeIn(1000)
       $('.tweetButton').show()
+      $('.showAll').show()
 
       if (game[0].period.isHalftime === true) {
         var text = `<h1><span class="nope">Game underway.</span> We're at halftime at the ${game[0].arena.name} in ${game[0].arena.city}. ${game[0].hTeam.triCode}: ${game[0].hTeam.score}, ${game[0].vTeam.triCode}: ${game[0].vTeam.score}.</h1>`
@@ -95,6 +121,8 @@ function getGame(){
       charset="utf-8"></script>`
       $(tweetHtml).hide().appendTo('.tweetButton')
       $('.tweetButton').delay(500).fadeIn(1000)
+
+      $('.homebtn').delay(1000).fadeIn(1000)
 
     } else {
 
@@ -161,12 +189,12 @@ function getGame(){
                 ${lastGame.v.tn} on ${lastGameTime} in ${lastGame.ac}. ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers
                 with ${lastGame.ptsls.pl[0].val} points. The Wizards are now ${lastGame.h.re} on the season.</h1>`
                 $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                $('.sadWall').fadeIn(1000)
+                $('#sadWall').fadeIn(1000)
               } else {
                 var text = `<h1 class="summary"><span class="nope">Nope.</span> The ${lastGame.h.tn} lost to the
                 ${lastGame.v.tn} on ${lastGameTime} in ${lastGame.ac}. The Wizards are now ${lastGame.h.re} on the season.</h1>`
                 $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                $('.sadWall').fadeIn(1000)
+                $('#sadWall').fadeIn(1000)
               }
         } else if (lastGame.v.ta === 'WAS' && parseInt(lastGame.v.s) < parseInt(lastGame.h.s)){
               if (lastGame.ptsls.pl.length > 0) {
@@ -174,12 +202,12 @@ function getGame(){
                   on ${lastGameTime} in ${lastGame.ac}. ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers
                   with ${lastGame.ptsls.pl[0].val} points. The Wizards are now ${lastGame.v.re} on the season.</h1>`
                   $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                  $('.sadWall').fadeIn(1000)
+                  $('#sadWall').fadeIn(1000)
                 } else {
                   var text = `<h1 class="summary"><span class="nope">Nope.</span> The ${lastGame.v.tn} lost to the ${lastGame.h.tn}
                   on ${lastGameTime} in ${lastGame.ac}. The Wizards are now ${lastGame.v.re} on the season.</h1>`
                   $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                  $('.sadWall').fadeIn(1000)
+                  $('#sadWall').fadeIn(1000)
                 }
         } else if (lastGame.h.ta === 'WAS' && parseInt(lastGame.h.s) > parseInt(lastGame.v.s)) {
               if (lastGame.ptsls.pl.length > 0) {
@@ -187,24 +215,24 @@ function getGame(){
                   in ${lastGame.ac}. ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers with ${lastGame.ptsls.pl[0].val}
                   points. The Wizards are now ${lastGame.h.re} on the season.</h1>`
                   $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                  $('.happyWall').fadeIn(1000)
+                  $('#happyWall').fadeIn(1000)
                 } else {
                   var text = `<h1 class="summary"><span class="nope">Yep!</span> The ${lastGame.h.tn} beat the ${lastGame.v.tn} on ${lastGameTime}
                   in ${lastGame.ac}. The Wizards are now ${lastGame.h.re} on the season.</h1>`
                   $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                  $('.happyWall').fadeIn(1000)
+                  $('#happyWall').fadeIn(1000)
                 }
         } else if (lastGame.v.ta === 'WAS' && parseInt(lastGame.v.s) > parseInt(lastGame.h.s)){
               if (lastGame.ptsls.pl.length > 0) {
                   var text = `<h1 class="summary"><span class="nope">Yep!</span> The ${lastGame.v.tn} beat the ${lastGame.h.tn} on ${lastGameTime} in ${lastGame.ac}.
                    ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers with ${lastGame.ptsls.pl[0].val} points. The Wizards are now ${lastGame.v.re} on the season.</h1>`
                   $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                  $('.happyWall').fadeIn(1000)
+                  $('#happyWall').fadeIn(1000)
                 } else {
                   var text = `<h1 class="summary"><span class="nope">Yep!</span> The ${lastGame.v.tn} beat the ${lastGame.h.tn} on ${lastGameTime} in ${lastGame.ac}.
                   The Wizards are now ${lastGame.v.re} on the season.</h1>`
                   $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                  $('.happyWall').fadeIn(1000)
+                  $('#happyWall').fadeIn(1000)
                 }
         }
 
@@ -234,6 +262,8 @@ function getGame(){
         $(tweetHtml).hide().appendTo('.tweetButton')
         $('.tweetButton').delay(500).fadeIn(1000)
 
+        $('.homebtn').delay(1000).fadeIn(1000)
+
       })
 
     }
@@ -243,9 +273,12 @@ function getGame(){
 }
 
 
-$('.showAll').click(function(){
+function browseGames() {
   $('.scoreboard').hide()
+  $('.tweetButton').hide()
+  $('.intro').hide()
   $('.all').show()
+  $('.choose').show()
   var url3 = `https://cors-anywhere.herokuapp.com/http://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2017/league/00_full_schedule.json`
   var gameMap
   var selects
@@ -269,63 +302,191 @@ $('.showAll').click(function(){
           }
           console.log(filteredArr)
           var mappedFilteredArr = filteredArr.map(function(game){
-            return `<option>${game.gdte} ${game.h.tn} at ${game.v.tn}</option>`
+            var gameArray = game.gdte.split('-')
+            return `<option value="${game.gdte.split('-')}">${gameArray[1]}/${gameArray[2]}/${gameArray[0]} ${game.h.tn} at ${game.v.tn}</option>`
           })
+          console.log(mappedFilteredArr)
           for (i = 0; i < mappedFilteredArr.length; i++){
             $('.choose').append($(mappedFilteredArr[i]))
           }
         })
-      })
+        $('select').change(function(){
+          console.log($('select').val().split(','))
 
-        //     $('.all').append(`<select>${response.lscd[i].mon}</select>`)
-        //       var filter = response.lscd[i].mscd.g.filter(function(game){
-        //         return game.h.tn === 'Wizards' || game.v.tn === 'Wizards'
-        //       })
-        //       for (i = 0; i < filter.length; i++) {
-        //         if (filter[i].stt === 'Final') {
-        //           arr.push(filter[i])
-        //         }
-        //       }
-        //     }
-        //   })
-        // })
+          var year = $('select').val().split(',')[0]
+          var month = $('select').val().split(',')[1]
+          var day = $('select').val().split(',')[2]
 
-          // var selects = response.lscd.map(function(item){
-          //   return `<select name="${item.mscd.mon}">
-          //   <option selected="selected" disabled="disabled">${item.mscd.mon}</option>
-          //   </select>`
-          // })
+          console.log(year, month, day)
+          $('body').css('background', 'white')
 
-          // var gameMap = response.lscd.map(function(item) {
-          //   return `<select name="${item.mscd.mon}">
-          //   <option selected="selected" disabled="disabled">${item.mscd.mon}</option>
-          //   <option>${item.mscd.g.gdte}</option>
-          //   </select>`
-          // })
-          // for (i = 0; i < response.lscd.length; i++) {
-          //   for (i = 0; i < selects.length; i++) {
-          //     console.log(($(selects[i])).attr('name'))
-          //     console.log(response.lscd[i].mscd.mon)
-          //     if ($(selects[i]).attr('name') === response.lscd[i].mscd.mon) {
-          //       console.log(gameMap)
-          //     }
-          //   }
-            // $('.all').append(gameMap)
-          // }
+          console.log()
 
+          var url4 = `https://cors-anywhere.herokuapp.com/http://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2017/league/00_full_schedule.json`
+          var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
+          $.ajax({
+            url: url4,
+            type: 'get',
+            dataType: 'json',
+            beforeSend: function(){
+              $('.all').hide()
+              $('.loading').show()
+            }
+                }).done((response) => {
+                  console.log(response)
+                  var getMonth = response.lscd.filter(function(item){
+                    return item.mscd.mon === months[parseInt(month) - 1]
+                  })
+                  console.log(getMonth[0])
+                  var selectedGame = getMonth[0].mscd.g.filter(function(item){
+                    return item.h.ta === 'WAS' || item.v.ta === 'WAS'
+                  })
+                  console.log(selectedGame)
+                  console.log(day)
+                  var filteredGame = selectedGame.filter(function(game){
+                    return game.gdte.split('-')[2] === day
+                  })
+                  console.log(filteredGame)
 
-          // for (i = 0; i < response.lscd.length; i++){
-          //   $('.all').append(`<select name="${response.lscd[i].mscd.mon}">
-          //   <option selected="selected" disabled="disabled">${response.lscd[i].mscd.mon}</option>
-          //   </select>`)
-          //   if (response.lscd[i].mscd.mon === $('select').attr('name')) {
-          //     $('select').append(`<option>hi</option>`)
-          //   }
-            // for (i = 0; i < response.lscd[i].mscd.g.length; i++) {
-            //   $('.sele')<option selected="selected">hi</option>
-            // }
-          // }
-          // console.log($('select').text())
-      //   })
-      // })
+                  $('.loading').hide()
+                  $('.tweetButton').hide()
+                  $('.scoreboard').show()
+                  $('.hidden').show()
+                  $('body').css('background', backgroundColor)
+
+                  if (filteredGame[0].h.ta === 'WAS' && parseInt(filteredGame[0].h.s) < parseInt(filteredGame[0].v.s)) {
+                          if (filteredGame[0].ptsls.pl.length > 0) {
+                          var text = `<h1 class="summary"><span class="nope">Nope.</span> The ${filteredGame[0].h.tn} lost to the
+                          ${filteredGame[0].v.tn} on ${month}/${day}/${year} in ${filteredGame[0].ac}. ${filteredGame[0].ptsls.pl[0].fn} ${filteredGame[0].ptsls.pl[0].ln} led all scorers
+                          with ${filteredGame[0].ptsls.pl[0].val} points. The Wizards went to ${filteredGame[0].h.re} on the season.</h1>`
+                          $('.wall').hide()
+                          $('.text').empty()
+                          $('.homeTeamName').empty()
+                          $('.awayTeamName').empty()
+                          $('.homeTeamScore').empty()
+                          $('.awayTeamScore').empty()
+                          $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
+                          $('#sadWall').fadeIn(1000)
+                        } else {
+                          var text = `<h1 class="summary"><span class="nope">Nope.</span> The ${filteredGame[0].h.tn} lost to the
+                          ${filteredGame[0].v.tn} on ${month}/${day}/${year} in ${filteredGame[0].ac}. The Wizards went to ${filteredGame[0].h.re} on the season.</h1>`
+                          $('.wall').hide()
+                          $('.text').empty()
+                          $('.homeTeamName').empty()
+                          $('.awayTeamName').empty()
+                          $('.homeTeamScore').empty()
+                          $('.awayTeamScore').empty()
+                          $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
+                          $('#sadWall').fadeIn(1000)
+                        }
+                  } else if (filteredGame[0].v.ta === 'WAS' && parseInt(filteredGame[0].v.s) < parseInt(filteredGame[0].h.s)){
+                        if (filteredGame[0].ptsls.pl.length > 0) {
+                            var text = `<h1 class="summary"><span class="nope">Nope.</span> The ${filteredGame[0].v.tn} lost to the ${filteredGame[0].h.tn}
+                            on ${month}/${day}/${year} in ${filteredGame[0].ac}. ${filteredGame[0].ptsls.pl[0].fn} ${filteredGame[0].ptsls.pl[0].ln} led all scorers
+                            with ${filteredGame[0].ptsls.pl[0].val} points. The Wizards went to ${filteredGame[0].v.re} on the season.</h1>`
+                            $('.wall').hide()
+                            $('.text').empty()
+                            $('.homeTeamName').empty()
+                            $('.awayTeamName').empty()
+                            $('.homeTeamScore').empty()
+                            $('.awayTeamScore').empty()
+                            $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
+                            $('#sadWall').fadeIn(1000)
+                          } else {
+                            var text = `<h1 class="summary"><span class="nope">Nope.</span> The ${filteredGame[0].v.tn} lost to the ${filteredGame[0].h.tn}
+                            on ${month}/${day}/${year} in ${filteredGame[0].ac}. The Wizards went to ${filteredGame[0].v.re} on the season.</h1>`
+                            $('.wall').hide()
+                            $('.text').empty()
+                            $('.homeTeamName').empty()
+                            $('.awayTeamName').empty()
+                            $('.homeTeamScore').empty()
+                            $('.awayTeamScore').empty()
+                            $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
+                            $('#sadWall').fadeIn(1000)
+                          }
+                  } else if (filteredGame[0].h.ta === 'WAS' && parseInt(filteredGame[0].h.s) > parseInt(filteredGame[0].v.s)) {
+                        if (filteredGame[0].ptsls.pl.length > 0) {
+                            var text = `<h1 class="summary"><span class="nope">Yep!</span> The ${filteredGame[0].h.tn} beat the ${filteredGame[0].v.tn} on ${month}/${day}/${year}
+                            in ${filteredGame[0].ac}. ${filteredGame[0].ptsls.pl[0].fn} ${filteredGame[0].ptsls.pl[0].ln} led all scorers with ${filteredGame[0].ptsls.pl[0].val}
+                            points. The Wizards went to ${filteredGame[0].h.re} on the season.</h1>`
+                            $('.wall').hide()
+                            $('.text').empty()
+                            $('.homeTeamName').empty()
+                            $('.awayTeamName').empty()
+                            $('.homeTeamScore').empty()
+                            $('.awayTeamScore').empty()
+                            $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
+                            $('#happyWall').fadeIn(1000)
+                          } else {
+                            var text = `<h1 class="summary"><span class="nope">Yep!</span> The ${filteredGame[0].h.tn} beat the ${filteredGame[0].v.tn} on ${month}/${day}/${year}
+                            in ${filteredGame[0].ac}. The Wizards went to ${filteredGame[0].h.re} on the season.</h1>`
+                            $('.wall').hide()
+                            $('.text').empty()
+                            $('.homeTeamName').empty()
+                            $('.awayTeamName').empty()
+                            $('.homeTeamScore').empty()
+                            $('.awayTeamScore').empty()
+                            $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
+                            $('#happyWall').fadeIn(1000)
+                          }
+                  } else if (filteredGame[0].v.ta === 'WAS' && parseInt(filteredGame[0].v.s) > parseInt(filteredGame[0].h.s)){
+                        if (filteredGame[0].ptsls.pl.length > 0) {
+                            var text = `<h1 class="summary"><span class="nope">Yep!</span> The ${filteredGame[0].v.tn} beat the ${filteredGame[0].h.tn} on ${month}/${day}/${year} in ${filteredGame[0].ac}.
+                             ${filteredGame[0].ptsls.pl[0].fn} ${filteredGame[0].ptsls.pl[0].ln} led all scorers with ${filteredGame[0].ptsls.pl[0].val} points. The Wizards went to ${filteredGame[0].v.re} on the season.</h1>`
+                             $('.wall').hide()
+                             $('.text').empty()
+                             $('.homeTeamName').empty()
+                             $('.awayTeamName').empty()
+                             $('.homeTeamScore').empty()
+                             $('.awayTeamScore').empty()
+                            $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
+                            $('#happyWall').fadeIn(1000)
+                          } else {
+                            var text = `<h1 class="summary"><span class="nope">Yep!</span> The ${filteredGame[0].v.tn} beat the ${filteredGame[0].h.tn} on ${month}/${day}/${year} in ${filteredGame[0].ac}.
+                            The Wizards went to ${filteredGame[0].v.re} on the season.</h1>`
+                            $('.wall').hide()
+                            $('.text').empty()
+                            $('.homeTeamName').empty()
+                            $('.awayTeamName').empty()
+                            $('.homeTeamScore').empty()
+                            $('.awayTeamScore').empty()
+                            $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
+                            $('#happyWall').fadeIn(1000)
+                          }
+                  }
+
+                  $('.homeTeamName').append(`${filteredGame[0].h.ta}`)
+                  $('.awayTeamName').append(`${filteredGame[0].v.ta}`)
+
+                  $('.homeTeamScore').append(`<h1><span id="homeScore">00</span></h1>`)
+                  $('.awayTeamScore').append(`<h1><span id="visitingScore">00</span></h1>`)
+
+                  $('.home').delay(400).fadeIn(1000)
+                  $('.away').delay(400).fadeIn(1000)
+
+                  $('#homeScore').delay(1000).animateNumber({ number: parseInt(filteredGame[0].h.s)})
+                  $('#visitingScore').delay(1000).animateNumber({ number: parseInt(filteredGame[0].v.s)})
+
+                  $('.homebtn').delay(1000).fadeIn(1000)
+
+                  $('.tweetButton').empty()
+                  var linkText = $('.text').text()
+                  linkText = linkText.split(' ')
+                  var filteredLinkText = linkText.filter(function(char){
+                    return char !== ''
+                  })
+                  console.log(filteredLinkText.join(' '))
+
+                  var tweetHtml = `<a href="https://twitter.com/intent/tweet?text=${filteredLinkText.join(' ').trim()}"
+                  class="twitter-share-button" data-show-count="true" data-size="large" data-hashtags="Wizards" data-via="Did_The_Wiz_Win">Tweet</a
+                  ><script async src="https://platform.twitter.com/widgets.js"
+                  charset="utf-8"></script>`
+                  $(tweetHtml).hide().appendTo('.tweetButton')
+                  $('.tweetButton').delay(500).fadeIn(1000)
+
+                  $('.homebtn').delay(2000).fadeIn(1000)
+
+          })
+        })
+      }
