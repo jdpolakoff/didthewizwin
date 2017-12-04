@@ -92,9 +92,10 @@ body {
   margin-top: 3%;
   margin-left: auto;
   margin-right: auto;
-  width: 15%;
+  /*width: 15%;*/
   text-align: center;
   border: 2px solid black;
+  -webkit-appearance: none;
 }
 
 .homebtn h3 {
@@ -134,7 +135,8 @@ color: white
   text-align: center;
   margin: auto;
   /*border: 2px solid black;*/
-  vertical-align: center
+  vertical-align: center;
+  -webkit-appearance: none;
 }
 
 .latest h3 {
@@ -174,7 +176,8 @@ color: white
   /*float: left;*/
   text-align: center;
   /*border: 2px solid black;*/
-  vertical-align: center
+  vertical-align: center;
+  -webkit-appearance: none;
 }
 
 .intro h1 {
