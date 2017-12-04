@@ -303,7 +303,7 @@ function browseGames() {
           console.log(filteredArr)
           var mappedFilteredArr = filteredArr.map(function(game){
             var gameArray = game.gdte.split('-')
-            return `<option value="${game.gdte.split('-')}">${gameArray[1]}/${gameArray[2]}/${gameArray[0]} ${game.h.tn} at ${game.v.tn}</option>`
+            return `<option value="${game.gdte.split('-')}">${gameArray[1]}/${gameArray[2]}/${gameArray[0]} ${game.v.tn} at ${game.h.tn}</option>`
           })
           console.log(mappedFilteredArr)
           for (i = 0; i < mappedFilteredArr.length; i++){
