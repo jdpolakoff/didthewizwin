@@ -75,7 +75,7 @@ function getGame(){
       $('.scoreboard').show()
       $('.hidden').show()
       $('body').css('background', backgroundColor)
-      $('#scowlWall').fadeIn(1000)
+      $('#scowlWall').show()
       $('.tweetButton').show()
       $('.showAll').show()
 
@@ -189,12 +189,12 @@ function getGame(){
                 ${lastGame.v.tn} on ${lastGameTime} in ${lastGame.ac}. ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers
                 with ${lastGame.ptsls.pl[0].val} points. The Wizards are now ${lastGame.h.re} on the season.</h1>`
                 $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                $('#sadWall').fadeIn(1000)
+                $('#sadWall').show()
               } else {
                 var text = `<h1 class="summary"><span class="nope">Nope.</span> The ${lastGame.h.tn} lost to the
                 ${lastGame.v.tn} on ${lastGameTime} in ${lastGame.ac}. The Wizards are now ${lastGame.h.re} on the season.</h1>`
                 $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                $('#sadWall').fadeIn(1000)
+                $('#sadWall').show()
               }
         } else if (lastGame.v.ta === 'WAS' && parseInt(lastGame.v.s) < parseInt(lastGame.h.s)){
               if (lastGame.ptsls.pl.length > 0) {
@@ -202,12 +202,12 @@ function getGame(){
                   on ${lastGameTime} in ${lastGame.ac}. ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers
                   with ${lastGame.ptsls.pl[0].val} points. The Wizards are now ${lastGame.v.re} on the season.</h1>`
                   $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                  $('#sadWall').fadeIn(1000)
+                  $('#sadWall').show()
                 } else {
                   var text = `<h1 class="summary"><span class="nope">Nope.</span> The ${lastGame.v.tn} lost to the ${lastGame.h.tn}
                   on ${lastGameTime} in ${lastGame.ac}. The Wizards are now ${lastGame.v.re} on the season.</h1>`
                   $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                  $('#sadWall').fadeIn(1000)
+                  $('#sadWall').show()
                 }
         } else if (lastGame.h.ta === 'WAS' && parseInt(lastGame.h.s) > parseInt(lastGame.v.s)) {
               if (lastGame.ptsls.pl.length > 0) {
@@ -215,24 +215,24 @@ function getGame(){
                   in ${lastGame.ac}. ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers with ${lastGame.ptsls.pl[0].val}
                   points. The Wizards are now ${lastGame.h.re} on the season.</h1>`
                   $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                  $('#happyWall').fadeIn(1000)
+                  $('#happyWall').show()
                 } else {
                   var text = `<h1 class="summary"><span class="nope">Yep!</span> The ${lastGame.h.tn} beat the ${lastGame.v.tn} on ${lastGameTime}
                   in ${lastGame.ac}. The Wizards are now ${lastGame.h.re} on the season.</h1>`
                   $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                  $('#happyWall').fadeIn(1000)
+                  $('#happyWall').show()
                 }
         } else if (lastGame.v.ta === 'WAS' && parseInt(lastGame.v.s) > parseInt(lastGame.h.s)){
               if (lastGame.ptsls.pl.length > 0) {
                   var text = `<h1 class="summary"><span class="nope">Yep!</span> The ${lastGame.v.tn} beat the ${lastGame.h.tn} on ${lastGameTime} in ${lastGame.ac}.
                    ${lastGame.ptsls.pl[0].fn} ${lastGame.ptsls.pl[0].ln} led all scorers with ${lastGame.ptsls.pl[0].val} points. The Wizards are now ${lastGame.v.re} on the season.</h1>`
                   $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                  $('#happyWall').fadeIn(1000)
+                  $('#happyWall').show()
                 } else {
                   var text = `<h1 class="summary"><span class="nope">Yep!</span> The ${lastGame.v.tn} beat the ${lastGame.h.tn} on ${lastGameTime} in ${lastGame.ac}.
                   The Wizards are now ${lastGame.v.re} on the season.</h1>`
                   $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                  $('#happyWall').fadeIn(1000)
+                  $('#happyWall').show()
                 }
         }
 
@@ -367,7 +367,7 @@ function browseGames() {
                           $('.homeTeamScore').empty()
                           $('.awayTeamScore').empty()
                           $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                          $('#sadWall').fadeIn(1000)
+                          $('#sadWall').show()
                         } else {
                           var text = `<h1 class="summary"><span class="nope">Nope.</span> The ${filteredGame[0].h.tn} lost to the
                           ${filteredGame[0].v.tn} on ${month}/${day}/${year} in ${filteredGame[0].ac}. The Wizards went to ${filteredGame[0].h.re} on the season.</h1>`
@@ -378,7 +378,7 @@ function browseGames() {
                           $('.homeTeamScore').empty()
                           $('.awayTeamScore').empty()
                           $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                          $('#sadWall').fadeIn(1000)
+                          $('#sadWall').show()
                         }
                   } else if (filteredGame[0].v.ta === 'WAS' && parseInt(filteredGame[0].v.s) < parseInt(filteredGame[0].h.s)){
                         if (filteredGame[0].ptsls.pl.length > 0) {
@@ -392,7 +392,7 @@ function browseGames() {
                             $('.homeTeamScore').empty()
                             $('.awayTeamScore').empty()
                             $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                            $('#sadWall').fadeIn(1000)
+                            $('#sadWall').show()
                           } else {
                             var text = `<h1 class="summary"><span class="nope">Nope.</span> The ${filteredGame[0].v.tn} lost to the ${filteredGame[0].h.tn}
                             on ${month}/${day}/${year} in ${filteredGame[0].ac}. The Wizards went to ${filteredGame[0].v.re} on the season.</h1>`
@@ -403,7 +403,7 @@ function browseGames() {
                             $('.homeTeamScore').empty()
                             $('.awayTeamScore').empty()
                             $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                            $('#sadWall').fadeIn(1000)
+                            $('#sadWall').show()
                           }
                   } else if (filteredGame[0].h.ta === 'WAS' && parseInt(filteredGame[0].h.s) > parseInt(filteredGame[0].v.s)) {
                         if (filteredGame[0].ptsls.pl.length > 0) {
@@ -417,7 +417,7 @@ function browseGames() {
                             $('.homeTeamScore').empty()
                             $('.awayTeamScore').empty()
                             $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                            $('#happyWall').fadeIn(1000)
+                            $('#happyWall').show()
                           } else {
                             var text = `<h1 class="summary"><span class="nope">Yep!</span> The ${filteredGame[0].h.tn} beat the ${filteredGame[0].v.tn} on ${month}/${day}/${year}
                             in ${filteredGame[0].ac}. The Wizards went to ${filteredGame[0].h.re} on the season.</h1>`
@@ -428,7 +428,7 @@ function browseGames() {
                             $('.homeTeamScore').empty()
                             $('.awayTeamScore').empty()
                             $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                            $('#happyWall').fadeIn(1000)
+                            $('#happyWall').show()
                           }
                   } else if (filteredGame[0].v.ta === 'WAS' && parseInt(filteredGame[0].v.s) > parseInt(filteredGame[0].h.s)){
                         if (filteredGame[0].ptsls.pl.length > 0) {
@@ -441,7 +441,7 @@ function browseGames() {
                              $('.homeTeamScore').empty()
                              $('.awayTeamScore').empty()
                             $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                            $('#happyWall').fadeIn(1000)
+                            $('#happyWall').show()
                           } else {
                             var text = `<h1 class="summary"><span class="nope">Yep!</span> The ${filteredGame[0].v.tn} beat the ${filteredGame[0].h.tn} on ${month}/${day}/${year} in ${filteredGame[0].ac}.
                             The Wizards went to ${filteredGame[0].v.re} on the season.</h1>`
@@ -452,7 +452,7 @@ function browseGames() {
                             $('.homeTeamScore').empty()
                             $('.awayTeamScore').empty()
                             $(text).hide().appendTo('.text').delay(200).fadeIn(1000)
-                            $('#happyWall').fadeIn(1000)
+                            $('#happyWall').show()
                           }
                   }
 
