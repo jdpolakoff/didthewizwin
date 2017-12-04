@@ -287,4 +287,7 @@ color: white
   .latest h3, .browse h3 {
     border: none
   }
+  .latest, .browse {
+    width: 80%;
+  }
 }
