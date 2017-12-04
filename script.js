@@ -307,6 +307,7 @@ function browseGames() {
             return `<option value="${game.gdte.split('-')}">${gameArray[1]}/${gameArray[2]}/${gameArray[0]} ${game.v.tn} at ${game.h.tn}</option>`
           })
           console.log(mappedFilteredArr)
+          $('.choose').append(`<option>Choose A Game</option>`)
           for (i = 0; i < mappedFilteredArr.length; i++){
             $('.choose').append($(mappedFilteredArr[i]))
           }
@@ -354,6 +355,7 @@ function browseGames() {
                   $('.tweetButton').hide()
                   $('.scoreboard').show()
                   $('.hidden').show()
+                  $('select').empty()
                   $('body').css('background', backgroundColor)
 
                   if (filteredGame[0].h.ta === 'WAS' && parseInt(filteredGame[0].h.s) < parseInt(filteredGame[0].v.s)) {
