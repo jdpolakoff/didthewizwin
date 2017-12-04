@@ -1,3 +1,4 @@
+//remember to clear out the select after each query
 var game
 var backgroundColor = 'linear-gradient(-90deg, #002B5C, #C4CED4, #E31837)'
 var selectedMonth
