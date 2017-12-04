@@ -290,11 +290,11 @@ color: white
   }
   .latest h3, .browse h3 {
     /*border: none;*/
-    padding: 10%;
-    font-size: 30px
+    /*padding: 10%;*/
+    font-size: 35px
   }
   .latest, .browse {
-    width: 80%;
+    width: 90%;
   }
   .browse {
     margin-top: 50%
