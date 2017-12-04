@@ -284,4 +284,7 @@ color: white
   .hidden {
     width: 70%;
   }
+  .latest h3, .browse h3 {
+    border: none
+  }
 }
