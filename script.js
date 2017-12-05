@@ -66,7 +66,7 @@ function getGame(){
       console.log(game)
     })
 
-    if (typeof game === 'object' && game.isGameActivated === true) {
+    if (typeof game !== 'undefined' && game.isGameActivated !== false) {
 
       console.log(typeof(game[0]))
       console.log(game[0])
