@@ -17,11 +17,13 @@ $('.latest h3').click(function(){
   $('.awayTeamScore').empty()
   $('.tweetButton').empty()
   $('body').css('background', 'white')
+  $('.refresh').hide()
   getGame()
 })
 
 $('.browse h3').click(function(){
   $('.tweetButton').empty()
+  $('.refresh').hide()
   browseGames()
 })
 
@@ -66,8 +68,9 @@ function getGame(){
       console.log(game)
     })
 
-    if (typeof game !== 'undefined' && game[0].isGameActivated !== false) {
-      console.log(game[0].isGameActivated)
+    if (typeof game !== 'undefined' && game.length > 0 && game[0].isGameActivated !== false) {
+      // typeof game !== 'undefined' &&
+      // console.log(game[0].isGameActivated)
       console.log(typeof(game[0]))
       console.log(game[0])
 
@@ -124,6 +127,7 @@ function getGame(){
       $('.tweetButton').delay(500).fadeIn(1000)
 
       $('.homebtn').delay(1000).fadeIn(1000)
+
 
     } else {
 
