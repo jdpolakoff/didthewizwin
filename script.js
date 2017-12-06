@@ -2,6 +2,7 @@
 var game
 var backgroundColor = 'linear-gradient(-90deg, #002B5C, #C4CED4, #E31837)'
 var selectedMonth
+console.log(teams)
 
 $(document).ready(function(){
   $('body').css('background', backgroundColor)
@@ -17,13 +18,13 @@ $('.latest h3').click(function(){
   $('.awayTeamScore').empty()
   $('.tweetButton').empty()
   $('body').css('background', 'white')
-  $('.refresh').hide()
+  $('.boxScore').hide()
   getGame()
 })
 
 $('.browse h3').click(function(){
   $('.tweetButton').empty()
-  $('.refresh').hide()
+  $('.boxScore').hide()
   browseGames()
 })
 
@@ -32,6 +33,7 @@ $('.homebtn').click(function(){
   $('.all').hide()
   $('.loading').hide()
   $('.intro').show()
+  $('body').css('background', backgroundColor)
 })
 
 
@@ -490,9 +492,75 @@ function browseGames() {
                   ><script async src="https://platform.twitter.com/widgets.js"
                   charset="utf-8"></script>`
                   $(tweetHtml).hide().appendTo('.tweetButton')
+
+                  $('.boxScore').delay(500).fadeIn(1000)
+
                   $('.tweetButton').delay(500).fadeIn(1000)
 
                   $('.homebtn').delay(2000).fadeIn(1000)
+
+                  $('.boxScore').click(function(){
+                    $('.tweetButton').hide()
+                    $('.scoreboard').hide()
+                    $('.hidden').hide()
+                    $('body').css('background', 'white')
+                    var url5 = `https://cors-anywhere.herokuapp.com/http://data.nba.net/data/10s/prod/v1/${year}${month}${day}/${filteredGame[0].gid}_boxscore.json`
+
+                    $.ajax({
+                      url: url5,
+                      type: 'get',
+                      dataType: 'json',
+                      beforeSend: function(){
+                        $('.loading').show()
+                      }
+                    }).done((response) => {
+
+                      console.log(response)
+                      var homeScoreBox = `<p>${response.basicGameData.hTeam.triCode}</p>`
+                      var map = []
+                      for (i = 0; i < response.basicGameData.hTeam.linescore.length; i++) {
+                        map += `<p>${response.basicGameData.hTeam.linescore[i].score}</p>`
+                      }
+                      var homeTotal = `<p class="total">${response.basicGameData.hTeam.score}</p>`
+                      console.log(homeScoreBox + map + homeTotal)
+                      var awayScoreBox = `<p>${response.basicGameData.vTeam.triCode}</p>`
+                      var map2 = []
+                      for (i = 0; i < response.basicGameData.vTeam.linescore.length; i++) {
+                        map2 += `<p>${response.basicGameData.vTeam.linescore[i].score}</p>`
+                      }
+                      var awayTotal = `<p class="total">${response.basicGameData.vTeam.score}</p>`
+                      console.log(awayScoreBox + map2 + awayTotal)
+
+                      var players = response.stats.activePlayers
+
+                      function getPlayers(){
+                            var url6 = `https://cors-anywhere.herokuapp.com/http://data.nba.net/data/10s/prod/v1/2017/players.json`
+
+                            $.ajax({
+                              url: url6,
+                              type: 'get',
+                              dataType: 'json'
+                            }).done((response) => {
+                              console.log(response.league.standard)
+                              for (j = 0; j < response.league.standard.length; j++){
+                                for (i = 0; i < players.length; i++){
+                                  if (players[i].personId === response.league.standard[j].personId && players[i].teamId === '1610612764') {
+                                    console.log(response.league.standard[j].firstName, response.league.standard[j].lastName)
+                                  }
+                              }
+                            }
+
+
+                        })
+
+                      }
+
+                    getPlayers()
+                  })
+                  })
+
+
+
 
           })
         })
