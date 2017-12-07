@@ -116,25 +116,34 @@ body {
   cursor: pointer
 }
 
-.box {
-  display: none;
-  margin-top: 3%;
-  margin-right: auto;
-  margin-left: auto;
-  /**border: 2px solid black;*/*/
-  height: 60%;
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  
+.homeBox {
+  min-width: 50%;
+  border: 2px solid black;
+  /*display: none*/
 }
 
-.homebtn h3 {
-/*padding-left: 15%;
-padding-right: 15%;
-padding-top: 5%;
-padding-bottom: 5%;*/
+.awayBox {
+  min-width: 50%;
+  float: right;
+  border: 2px solid black;
+  /*display: none*/
+}
+
+.box {
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  /*flex-direction: row;*/
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-top: 3%;
+  border: 2px solid black;
+  width: 80%;
+  height: 80%;
 }
 
 .homebtn:hover {
@@ -224,12 +233,6 @@ color: white
   font-size: 52px;
   font-family: 'Digital';
   color: black
-}
-
-.flex {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
 }
 
 .showAll {

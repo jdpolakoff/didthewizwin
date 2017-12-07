@@ -325,10 +325,8 @@ function browseGames() {
           var month = $('select').val().split(',')[1]
           var day = $('select').val().split(',')[2]
 
-          console.log(year, month, day)
+          $('.all').hide()
           $('body').css('background', 'white')
-
-          console.log()
 
           var url4 = `https://cors-anywhere.herokuapp.com/http://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2017/league/00_full_schedule.json`
           var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -532,6 +530,8 @@ function browseGames() {
                       console.log(awayScoreBox + map2 + awayTotal)
 
                       var players = response.stats.activePlayers
+                      var wizardsPlayers = []
+                      var otherPlayers = []
 
                       function getPlayers(){
                             var url6 = `https://cors-anywhere.herokuapp.com/http://data.nba.net/data/10s/prod/v1/2017/players.json`
@@ -545,23 +545,30 @@ function browseGames() {
                               for (j = 0; j < response.league.standard.length; j++){
                                 for (i = 0; i < players.length; i++){
                                   if (players[i].personId === response.league.standard[j].personId && players[i].teamId === '1610612764') {
-                                    console.log(response.league.standard[j].firstName, response.league.standard[j].lastName)
+                                    wizardsPlayers.push(`${response.league.standard[j].firstName} ${response.league.standard[j].lastName}`)
+                                  } else if (players[i].personId === response.league.standard[j].personId) {
+                                    otherPlayers.push(`${response.league.standard[j].firstName} ${response.league.standard[j].lastName}`)
+                                    console.log(response.league.standard[j].teamId)
                                   }
+                                }
                               }
-                            }
+                            })
+                            console.log(wizardsPlayers)
+                            console.log(otherPlayers)
+                        }
+                        getPlayers()
+                        $('.loading').hide()
+                        $('.box').css('visibility', 'visible')
 
 
-                        })
 
-                      }
+                      })
 
-                    getPlayers()
                   })
-                  })
+                })
 
 
 
 
           })
-        })
-      }
+        }
