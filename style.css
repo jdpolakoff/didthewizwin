@@ -58,6 +58,10 @@ body {
   margin-top: 20%;
 }
 
+.colspan {
+  text-align: center;
+  font-family: 'Digital'
+}
 
 .homeTeamName, .awayTeamName {
   font-size: 50px;
@@ -118,21 +122,21 @@ body {
 
 .homeBox {
   min-width: 50%;
-  border: 2px solid black;
+  /*border: 2px solid black;*/
   /*display: none*/
 }
 
 .awayBox {
   min-width: 50%;
   float: right;
-  border: 2px solid black;
+  /*border: 2px solid black;*/
   /*display: none*/
 }
 
 .box {
   visibility: hidden;
   display: flex;
-  justify-content: center;
+  /*justify-content: center;*/
   /*flex-direction: row;*/
   position: absolute;
   top: 0;
@@ -141,9 +145,19 @@ body {
   right: 0;
   margin: auto;
   margin-top: 3%;
-  border: 2px solid black;
-  width: 80%;
-  height: 80%;
+  /*border: 2px solid black;*/
+  width: 100%;
+  height: 100%;
+}
+
+.homeTable, .awayTable {
+  margin: 0 auto;
+  font-size: 20px
+}
+
+.homeTable td, .awayTable td {
+  padding: 1%;
+  /*border: 1px solid black*/
 }
 
 .homebtn:hover {
@@ -333,5 +347,11 @@ color: white
   }
   .scoreboard {
     margin-top: 8%;
+  }
 }
+
+@media only screen and (max-width: 1200px)  {
+  .box {
+    flex-direction: column
+  }
 }

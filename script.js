@@ -514,6 +514,19 @@ function browseGames() {
                     }).done((response) => {
 
                       console.log(response)
+
+                      $('.homeTeamTri').append(`<td colspan="7" class="colspan"><h2>${response.basicGameData.hTeam.triCode}</h2></td>`)
+                      $('.awayTeamTri').append(`<td colspan="7" class="colspan"><h2>${response.basicGameData.vTeam.triCode}</h2></td>`)
+
+                      var wizIsHome
+                      var wizIsAway
+
+                      if (response.basicGameData.hTeam.triCode === 'WAS'){
+                        var wizIsHome = true
+                      } else {
+                        wizIsHome = false
+                      }
+
                       var homeScoreBox = `<p>${response.basicGameData.hTeam.triCode}</p>`
                       var map = []
                       for (i = 0; i < response.basicGameData.hTeam.linescore.length; i++) {
@@ -529,11 +542,15 @@ function browseGames() {
                       var awayTotal = `<p class="total">${response.basicGameData.vTeam.score}</p>`
                       console.log(awayScoreBox + map2 + awayTotal)
 
-                      var players = response.stats.activePlayers
+                      var players = response.stats.activePlayers.sort(function(a, b){
+                        return b.points - a.points
+                      })
+                      console.log(players)
+
                       var wizardsPlayers = []
                       var otherPlayers = []
 
-                      function getPlayers(){
+                      // function getPlayers(){
                             var url6 = `https://cors-anywhere.herokuapp.com/http://data.nba.net/data/10s/prod/v1/2017/players.json`
 
                             $.ajax({
@@ -541,24 +558,45 @@ function browseGames() {
                               type: 'get',
                               dataType: 'json'
                             }).done((response) => {
-                              console.log(response.league.standard)
                               for (j = 0; j < response.league.standard.length; j++){
                                 for (i = 0; i < players.length; i++){
                                   if (players[i].personId === response.league.standard[j].personId && players[i].teamId === '1610612764') {
-                                    wizardsPlayers.push(`${response.league.standard[j].firstName} ${response.league.standard[j].lastName}`)
+
+                                    wizardsPlayers.push(`<tr><td>${response.league.standard[j].firstName} ${response.league.standard[j].lastName}</td>
+                                      <td>${players[i].points}</td><td>${players[i].assists}</td><td>${players[i].totReb}</td><td>${players[i].blocks}</td>
+                                      <td>${players[i].steals}</td><td>${players[i].min}</td></tr>`)
                                   } else if (players[i].personId === response.league.standard[j].personId) {
-                                    otherPlayers.push(`${response.league.standard[j].firstName} ${response.league.standard[j].lastName}`)
-                                    console.log(response.league.standard[j].teamId)
+                                    otherPlayers.push(`<tr><td>${response.league.standard[j].firstName} ${response.league.standard[j].lastName}</td>
+                                      <td>${players[i].points}</td><td>${players[i].assists}</td><td>${players[i].totReb}</td><td>${players[i].blocks}</td>
+                                      <td>${players[i].steals}</td><td>${players[i].min}</td></tr>`)
                                   }
                                 }
                               }
+                              if (wizIsHome === true) {
+                                for (d = 0; d < wizardsPlayers.length; d++){
+                                  $('.homeTable').append(wizardsPlayers[d])
+                                }
+                                  for (c = 0; c < otherPlayers.length; c++){
+                                    $('.awayTable').append(otherPlayers[c])
+                                  }
+                              } else {
+                                for (d = 0; d < wizardsPlayers.length; d++){
+                                  $('.awayTable').append(wizardsPlayers[d])
+                                }
+                                  for (c = 0; c < otherPlayers.length; c++){
+                                    $('.homeTable').append(otherPlayers[c])
+                                  }
+                                }
                             })
-                            console.log(wizardsPlayers)
-                            console.log(otherPlayers)
-                        }
-                        getPlayers()
+                        // }
+                        console.log(wizardsPlayers)
+                        console.log(otherPlayers)
+                        // getPlayers()
                         $('.loading').hide()
                         $('.box').css('visibility', 'visible')
+
+
+
 
 
 
