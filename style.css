@@ -439,6 +439,18 @@ table, th, td {
   vertical-align: middle;
 }
 
+
+@media only screen and (max-width: 1200px)  {
+  .box {
+    flex-direction: column;
+    align-items: center;
+  }
+  .homeTable, .awayTable {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto
+  }
+}
 @media only screen and (max-width: 600px)  {
   .hidden {
     width: 70%;
@@ -458,15 +470,12 @@ table, th, td {
   .scoreboard {
     margin-top: 8%;
   }
-}
-
-@media only screen and (max-width: 1200px)  {
   .box {
     flex-direction: column;
-    justify-content: center;
-    align-items: center
+    align-items: stretch
   }
   .homeTable, .awayTable {
-    margin: auto;
+    width: 100%;
+    margin-left: 5%
   }
 }
