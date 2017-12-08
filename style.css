@@ -87,7 +87,7 @@ body {
 
 .homebtn, .homeFromBox {
   display: none;
-  font-size: 20px;
+  font-size: 34px;
   color: black;
   padding-top: 1%;
   padding-bottom: 1%;
@@ -102,6 +102,14 @@ body {
   text-align: center;
   border: 2px solid black;
   -webkit-appearance: none;
+}
+
+.btnBox {
+  margin-top: 3%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 10%;
+  width: 10%
 }
 
 .boxScore {
@@ -477,10 +485,5 @@ table, th, td {
   .homeTable, .awayTable {
     width: 90%;
     margin-left: 5%
-  }
-  .homeFromBox {
-    height: 10%;
-    margin-top: 10%;
-    margin-left: 50%;
   }
 }
