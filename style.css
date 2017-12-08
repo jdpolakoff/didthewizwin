@@ -10,12 +10,12 @@ body {
 }
 
 .onLoad {
+  background-image: url("brad.gif");
   position: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
-  background-image: url("brad.gif");
   width: 100%;
   height: 100%;
 }
@@ -489,6 +489,7 @@ table, th, td {
   }
   .intro {
     width: 80%;
+    height: 100%;
   }
   .latest h3, .browse h3 {
     font-size: 35px
