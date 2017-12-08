@@ -80,9 +80,15 @@ body {
   left: 0;
   right: 0;
   margin: auto;
-  /*border: 2px solid black;*/
-  height: 50%;
-  width: 50%;
+  border: 2px solid black;
+  height: 35%;
+  width: 35%;
+}
+
+
+.loading img {
+  position: relative;
+  margin-left: 25%;
 }
 
 .homebtn, .homeFromBox {
@@ -214,6 +220,7 @@ body {
 .boxx {
   display: none
 }
+
 
 .statText img {
   height: 150px
@@ -403,10 +410,6 @@ table, th, td {
   font-size: 24px;
 }
 
-.loading img {
-  margin-left: 25%;
-}
-
 .scoreboard {
   margin-top: 3%;
   margin-right: auto;
@@ -489,5 +492,9 @@ table, th, td {
     width: 90%;
     margin-left: auto;
     margin-right: auto
+  }
+  .loading img {
+    position: relative;
+    margin-left: 0;
   }
 }
