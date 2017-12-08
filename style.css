@@ -478,4 +478,9 @@ table, th, td {
     width: 90%;
     margin-left: 5%
   }
+  .homeFromBox {
+    height: 10%;
+    margin-top: 10%;
+    margin-left: 50%;
+  }
 }
