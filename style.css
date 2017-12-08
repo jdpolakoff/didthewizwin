@@ -89,7 +89,7 @@ body {
   width: 50%;
 }
 
-.homebtn {
+.homebtn, .homeFromBox {
   display: none;
   font-size: 18px;
   height: 5%;
@@ -265,7 +265,7 @@ table, th, td {
   color: black
 }
 
-.homebtn:hover {
+.homebtn:hover, .homeFromBox:hover {
 cursor: pointer;
 background-color: rgba(0, 43, 92, 0.1);
 color: white

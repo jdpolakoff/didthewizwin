@@ -28,13 +28,22 @@ $('.browse h3').click(function(){
   browseGames()
 })
 
-$('.homebtn').click(function(){
+$(document).on('click', '.homebtn', function(){
+  console.log('hi')
   $('.scoreboard').hide()
   $('.all').hide()
   $('.loading').hide()
-  $('.boxx').empty()
   $('.intro').show()
   $('body').css('background', backgroundColor)
+})
+
+$(document).on('click', '.homeFromBox', function(){
+  // $('.statText').remove()
+  $('.boxx').hide()
+  // $('.quarters').html('')
+  // $('.box').html('')
+  location.reload()
+  $('.intro').show()
 })
 
 
@@ -514,69 +523,6 @@ function browseGames() {
                       }
                     }).done((response) => {
 
-                      if ($('.boxx').is(':empty')) {
-                      $('.boxx').append(`<div class="statText">
-                        <img class="logo" src="./dclogo.png"/>
-                      </div>
-                      <div class="quarters">
-                        <table class="qs">
-                          <tr class="row">
-                          </tr>
-
-                          <tr class="hQuarts">
-                          </tr>
-
-                          <tr class="vQuarts">
-                          </tr>
-
-                        </table>
-                      </div>
-                      <div class="box">
-                      <div class="homeBox">
-                        <table class="homeTable">
-                          <tr class="homeTeamTri">
-
-                          </tr>
-                          <tr>
-                            <th></th>
-                            <th>Points</th>
-                            <th>Assists</th>
-                            <th>Rebounds</th>
-                            <th>Blocks</th>
-                            <th>Steals</th>
-                            <th>Minutes</th>
-                          </tr>
-
-                          <!-- <tr class="homeStats">
-
-                          </tr> -->
-
-                        </table>
-                      </div>
-                      <div class="awayBox">
-                        <table class="awayTable">
-                          <tr class="awayTeamTri">
-                          </tr>
-                          <tr>
-                            <th></th>
-                            <th>Points</th>
-                            <th>Assists</th>
-                            <th>Rebounds</th>
-                            <th>Blocks</th>
-                            <th>Steals</th>
-                            <th>Minutes</th>
-                          </tr>
-
-                          <!-- <tr class="awayStats">
-
-                          </tr> -->
-
-                        </table>
-                      </div>
-                    </div>
-                    <button class="homebtn">Home</button>`)
-                  }
-
                       console.log(response)
 
                       $('.homeTeamTri').append(`<td colspan="7" class="colspan" data-neon="basic"><h2>${response.basicGameData.hTeam.triCode}</h2></td>`)
@@ -682,7 +628,7 @@ function browseGames() {
                         $('body').css('background', backgroundColor)
                         // $('.box').css('visibility', 'visible')
                         $('.boxx').show()
-                        $('.homebtn').delay(1000).fadeIn(1000)
+                        $('.homeFromBox').delay(1000).fadeIn(1000)
 
 
 
