@@ -177,8 +177,13 @@ main {
   text-align: center;
   margin: 0 auto;
   width: 60%;
+  /*color: white;*/
   font-size: 22px;
   display: none
+}
+
+.text {
+  /*color: white*/
 }
 
 .quarters {
@@ -393,11 +398,6 @@ table, th, td {
   color: black;
 }
 
-.intro h2 {
-  font-size: 52px;
-  font-family: 'Digital';
-  color: black
-}
 
 .showAll {
   display: none;
@@ -487,7 +487,7 @@ table, th, td {
     margin-right: auto
   }
   .browse {
-    margin-top: 15%
+    margin-top: 20%
   }
 }
 @media only screen and (max-width: 600px)  {

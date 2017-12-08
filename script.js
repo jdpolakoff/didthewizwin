@@ -1,6 +1,7 @@
 //remember to clear out the select after each query
 var game
 var backgroundColor = 'linear-gradient(-90deg, #002B5C, #C4CED4, #E31837)'
+// var backgroundColor = 'black'
 var selectedMonth
 console.log(teams)
 
@@ -31,22 +32,22 @@ $('.browse h3').click(function(){
 })
 
 $(document).on('click', '.homebtn', function(){
+  location.reload()
   // console.log('hi')
   // $('.scoreboard').hide()
   // $('.all').hide()
   // $('.loading').hide()
   // $('.intro').show()
   // $('body').css('background', backgroundColor)
-  location.reload()
 })
 
 $(document).on('click', '.homeFromBox', function(){
+  location.reload()
   // $('.statText').remove()
-  $('.boxx').hide()
+  // $('.boxx').hide()
   // $('.quarters').html('')
   // $('.box').html('')
-  location.reload()
-  $('.intro').show()
+  // $('.intro').show()
 })
 
 
