@@ -5,10 +5,11 @@ var selectedMonth
 console.log(teams)
 
 $(document).ready(function(){
-  $('body').css('background', backgroundColor)
+  $('body').addClass('onLoad')
 })
 
 $('.latest h3').click(function(){
+  $('body').removeClass('onLoad')
   $('.intro').hide()
   $('.wall').hide()
   $('.text').empty()
@@ -23,6 +24,7 @@ $('.latest h3').click(function(){
 })
 
 $('.browse h3').click(function(){
+  $('body').removeClass('onLoad')
   $('.tweetButton').empty()
   $('.boxScore').hide()
   browseGames()
@@ -295,6 +297,7 @@ function browseGames() {
   $('.scoreboard').hide()
   $('.tweetButton').hide()
   $('.intro').hide()
+  $('body').css('background', backgroundColor)
   $('.all').show()
   $('.choose').append(`<option>Choose A Game</option>`)
   $('.choose').show()
@@ -308,6 +311,7 @@ function browseGames() {
     type: 'get',
     dataType: 'json'
         }).done((response) => {
+
           console.log(response)
           for (i = 0; i < response.lscd.length; i++) {
             for (j = 0; j < response.lscd[i].mscd.g.length; j++){

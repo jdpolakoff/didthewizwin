@@ -8,6 +8,22 @@
 body {
   font-family: 'Asap Condensed', sans-serif;
 }
+
+.onLoad {
+  position: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-image: url("brad.gif");
+  width: 100%;
+  height: 100%;
+}
+
+/*
+main {
+}*/
+
 /*https://github.com/extempl/neon/blob/master/css/neon.css*/
 
 
@@ -327,7 +343,9 @@ table, th, td {
   width: 80%;
   margin: 0 auto;
   padding: 2%;
-  border: 2px solid black
+  /*border: 2px solid black;*/
+  background-color: rgba(0, 43, 92, 0.1);
+  color: white
 }
 
 .browse h3 {
@@ -337,7 +355,8 @@ table, th, td {
   margin-left: auto;
   margin-right: auto;
   padding: 2%;
-  border: 2px solid black
+  background-color: rgba(0, 43, 92, 0.1);
+  color: white
 }
 
 .or {
@@ -348,8 +367,7 @@ table, th, td {
 
 .browse h3:hover, .latest h3:hover {
   cursor: pointer;
-  background-color: rgba(0, 43, 92, 0.1);
-  color: white
+  background-color: rgba(0, 43, 92, 0.4);
 }
 
 .browse {
