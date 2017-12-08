@@ -446,7 +446,7 @@ table, th, td {
     align-items: center;
   }
   .homeTable, .awayTable {
-    width: 100%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto
   }
@@ -475,7 +475,7 @@ table, th, td {
     align-items: stretch
   }
   .homeTable, .awayTable {
-    width: 100%;
+    width: 90%;
     margin-left: 5%
   }
 }
