@@ -632,11 +632,11 @@ function browseGames() {
                         $('body').css('background', backgroundColor)
                         // $('.box').css('visibility', 'visible')
                         $('.boxx').show()
+                        $('.statText').fadeIn(300)
+                        $('.quarters').delay(600).fadeIn(1000)
+                        $('.homeTable').delay(600).fadeIn(1000)
+                        $('.awayTable').delay(600).fadeIn(1000)
                         $('.homeFromBox').delay(1000).fadeIn(1000)
-
-
-
-
 
                       })
                     }

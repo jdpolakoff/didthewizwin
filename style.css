@@ -156,12 +156,14 @@ body {
   margin: 0 auto;
   width: 60%;
   font-size: 22px;
+  display: none
 }
 
 .quarters {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 3%;
+  display: none
 }
 
 .row {
@@ -240,7 +242,8 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 95%;
-  font-size: 20px
+  font-size: 20px;
+  display: none
 }
 
 .homeTable td, .awayTable td {
