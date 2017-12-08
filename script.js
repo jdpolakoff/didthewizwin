@@ -29,12 +29,13 @@ $('.browse h3').click(function(){
 })
 
 $(document).on('click', '.homebtn', function(){
-  console.log('hi')
-  $('.scoreboard').hide()
-  $('.all').hide()
-  $('.loading').hide()
-  $('.intro').show()
-  $('body').css('background', backgroundColor)
+  // console.log('hi')
+  // $('.scoreboard').hide()
+  // $('.all').hide()
+  // $('.loading').hide()
+  // $('.intro').show()
+  // $('body').css('background', backgroundColor)
+  location.reload()
 })
 
 $(document).on('click', '.homeFromBox', function(){
@@ -512,8 +513,11 @@ function browseGames() {
                     $('.scoreboard').hide()
                     $('.hidden').hide()
                     $('body').css('background', 'white')
-                    var url5 = `https://cors-anywhere.herokuapp.com/http://data.nba.net/data/10s/prod/v1/${year}${month}${day}/${filteredGame[0].gid}_boxscore.json`
+                    getBox()
+                  })
 
+                  function getBox() {
+                    var url5 = `https://cors-anywhere.herokuapp.com/http://data.nba.net/data/10s/prod/v1/${year}${month}${day}/${filteredGame[0].gid}_boxscore.json`
                     $.ajax({
                       url: url5,
                       type: 'get',
@@ -570,7 +574,7 @@ function browseGames() {
                       $('.statText').append(`<p>Game was on ${month}/${day}/${year} in ${response.basicGameData.arena.city}...
                         ${response.basicGameData.nugget.text}...Game lasted ${response.basicGameData.gameDuration.hours}
                         hours and ${response.basicGameData.gameDuration.minutes} minutes...There were ${response.stats.leadChanges} lead changes and
-                        the game was tied ${response.stats.timesTied} times...`)
+                        ${response.stats.timesTied} ties...`)
 
 
                       var players = response.stats.activePlayers
@@ -635,8 +639,7 @@ function browseGames() {
 
 
                       })
-
-                  })
+                    }
                 })
 
 
