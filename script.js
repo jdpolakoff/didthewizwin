@@ -32,6 +32,7 @@ $('.homebtn').click(function(){
   $('.scoreboard').hide()
   $('.all').hide()
   $('.loading').hide()
+  $('.boxx').empty()
   $('.intro').show()
   $('body').css('background', backgroundColor)
 })
@@ -513,10 +514,103 @@ function browseGames() {
                       }
                     }).done((response) => {
 
+                      if ($('.boxx').is(':empty')) {
+                      $('.boxx').append(`<div class="statText">
+                        <img class="logo" src="./dclogo.png"/>
+                      </div>
+                      <div class="quarters">
+                        <table class="qs">
+                          <tr class="row">
+                          </tr>
+
+                          <tr class="hQuarts">
+                          </tr>
+
+                          <tr class="vQuarts">
+                          </tr>
+
+                        </table>
+                      </div>
+                      <div class="box">
+                      <div class="homeBox">
+                        <table class="homeTable">
+                          <tr class="homeTeamTri">
+
+                          </tr>
+                          <tr>
+                            <th></th>
+                            <th>Points</th>
+                            <th>Assists</th>
+                            <th>Rebounds</th>
+                            <th>Blocks</th>
+                            <th>Steals</th>
+                            <th>Minutes</th>
+                          </tr>
+
+                          <!-- <tr class="homeStats">
+
+                          </tr> -->
+
+                        </table>
+                      </div>
+                      <div class="awayBox">
+                        <table class="awayTable">
+                          <tr class="awayTeamTri">
+                          </tr>
+                          <tr>
+                            <th></th>
+                            <th>Points</th>
+                            <th>Assists</th>
+                            <th>Rebounds</th>
+                            <th>Blocks</th>
+                            <th>Steals</th>
+                            <th>Minutes</th>
+                          </tr>
+
+                          <!-- <tr class="awayStats">
+
+                          </tr> -->
+
+                        </table>
+                      </div>
+                    </div>
+                    <button class="homebtn">Home</button>`)
+                  }
+
                       console.log(response)
 
-                      $('.homeTeamTri').append(`<td colspan="7" class="colspan"><h2>${response.basicGameData.hTeam.triCode}</h2></td>`)
-                      $('.awayTeamTri').append(`<td colspan="7" class="colspan"><h2>${response.basicGameData.vTeam.triCode}</h2></td>`)
+                      $('.homeTeamTri').append(`<td colspan="7" class="colspan" data-neon="basic"><h2>${response.basicGameData.hTeam.triCode}</h2></td>`)
+                      $('.awayTeamTri').append(`<td colspan="7" class="colspan" data-neon="basic"><h2>${response.basicGameData.vTeam.triCode}</h2></td>`)
+
+                      var quarters = [`<th></th>`]
+                      for (b = 0; b < response.basicGameData.hTeam.linescore.length; b++){
+                        quarters.push(`<th data-neon="basic">Q${parseInt(b) + 1}</th>`)
+                      }
+                      quarters.push(`<th data-neon="basic">TOT</th>`)
+
+                      for (a = 0; a < quarters.length; a++) {
+                        $('.row').append(quarters[a])
+                      }
+
+                      var homeQuarts = [`<td data-neon="basic" class="name">${response.basicGameData.hTeam.triCode}</td>`]
+                      for (e = 0; e < response.basicGameData.hTeam.linescore.length; e++){
+                        homeQuarts.push(`<td>${response.basicGameData.hTeam.linescore[e].score}</td>`)
+                      }
+                      homeQuarts.push(`<td>${response.basicGameData.hTeam.score}</td>`)
+
+                      var visitQuarts = [`<td data-neon="basic" class="name">${response.basicGameData.vTeam.triCode}</td>`]
+                      for (f = 0; f < response.basicGameData.vTeam.linescore.length; f++){
+                        visitQuarts.push(`<td>${response.basicGameData.vTeam.linescore[f].score}</td>`)
+                      }
+                      visitQuarts.push(`<td>${response.basicGameData.vTeam.score}</td>`)
+
+
+                      for (g = 0; g < homeQuarts.length; g++){
+                        $('.hQuarts').append(homeQuarts[g])
+                        $('.vQuarts').append(visitQuarts[g])
+                      }
+
+
 
                       var wizIsHome
                       var wizIsAway
@@ -527,25 +621,13 @@ function browseGames() {
                         wizIsHome = false
                       }
 
-                      var homeScoreBox = `<p>${response.basicGameData.hTeam.triCode}</p>`
-                      var map = []
-                      for (i = 0; i < response.basicGameData.hTeam.linescore.length; i++) {
-                        map += `<p>${response.basicGameData.hTeam.linescore[i].score}</p>`
-                      }
-                      var homeTotal = `<p class="total">${response.basicGameData.hTeam.score}</p>`
-                      console.log(homeScoreBox + map + homeTotal)
-                      var awayScoreBox = `<p>${response.basicGameData.vTeam.triCode}</p>`
-                      var map2 = []
-                      for (i = 0; i < response.basicGameData.vTeam.linescore.length; i++) {
-                        map2 += `<p>${response.basicGameData.vTeam.linescore[i].score}</p>`
-                      }
-                      var awayTotal = `<p class="total">${response.basicGameData.vTeam.score}</p>`
-                      console.log(awayScoreBox + map2 + awayTotal)
+                      $('.statText').append(`<p>Game was on ${month}/${day}/${year} in ${response.basicGameData.arena.city}...
+                        ${response.basicGameData.nugget.text}...Game lasted ${response.basicGameData.gameDuration.hours}
+                        hours and ${response.basicGameData.gameDuration.minutes} minutes...There were ${response.stats.leadChanges} lead changes and
+                        the game was tied ${response.stats.timesTied} times...`)
 
-                      var players = response.stats.activePlayers.sort(function(a, b){
-                        return b.points - a.points
-                      })
-                      console.log(players)
+
+                      var players = response.stats.activePlayers
 
                       var wizardsPlayers = []
                       var otherPlayers = []
@@ -558,10 +640,13 @@ function browseGames() {
                               type: 'get',
                               dataType: 'json'
                             }).done((response) => {
+                              // players.sort(function(a, b){
+                              //   return b.points - a.points
+                              // })
                               for (j = 0; j < response.league.standard.length; j++){
                                 for (i = 0; i < players.length; i++){
                                   if (players[i].personId === response.league.standard[j].personId && players[i].teamId === '1610612764') {
-
+                                    // console.log(players)
                                     wizardsPlayers.push(`<tr><td>${response.league.standard[j].firstName} ${response.league.standard[j].lastName}</td>
                                       <td>${players[i].points}</td><td>${players[i].assists}</td><td>${players[i].totReb}</td><td>${players[i].blocks}</td>
                                       <td>${players[i].steals}</td><td>${players[i].min}</td></tr>`)
@@ -587,14 +672,17 @@ function browseGames() {
                                     $('.homeTable').append(otherPlayers[c])
                                   }
                                 }
+
                             })
                         // }
                         console.log(wizardsPlayers)
                         console.log(otherPlayers)
                         // getPlayers()
                         $('.loading').hide()
-                        $('.box').css('visibility', 'visible')
-
+                        $('body').css('background', backgroundColor)
+                        // $('.box').css('visibility', 'visible')
+                        $('.boxx').show()
+                        $('.homebtn').delay(1000).fadeIn(1000)
 
 
 
