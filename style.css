@@ -319,7 +319,7 @@ table, th, td {
   margin: auto;
   /*border: 2px solid black;*/
   height: 95%;
-  width: 50%;
+  width: 60%;
   text-align: center
 }
 
@@ -345,18 +345,22 @@ table, th, td {
   padding: 2%;
   /*border: 2px solid black;*/
   background-color: rgba(0, 43, 92, 0.1);
-  color: white
+  color: white;
+}
+
+.group {
+  height: 40%;
 }
 
 .browse h3 {
   font-size: 24px;
   width: 80%;
-  margin-top: 5%;
+  margin-top: 10%;
   margin-left: auto;
   margin-right: auto;
   padding: 2%;
   background-color: rgba(0, 43, 92, 0.1);
-  color: white
+  color: white;
 }
 
 .or {
@@ -482,6 +486,9 @@ table, th, td {
     margin-left: auto;
     margin-right: auto
   }
+  .browse {
+    margin-top: 15%
+  }
 }
 @media only screen and (max-width: 600px)  {
   .hidden {
@@ -489,10 +496,11 @@ table, th, td {
   }
   .intro {
     width: 80%;
-    height: 100%;
+    height: 90%;
   }
   .latest h3, .browse h3 {
-    font-size: 35px
+    font-size: 24px;
+    width: 80%;
   }
   .latest, .browse {
     width: 90%;
