@@ -484,6 +484,7 @@ table, th, td {
   }
   .homeTable, .awayTable {
     width: 90%;
-    margin-left: 5%
+    margin-left: auto;
+    margin-right: auto
   }
 }
