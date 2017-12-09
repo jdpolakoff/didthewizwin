@@ -109,8 +109,8 @@ main {
 
 .homebtn, .homeFromBox {
   display: none;
-  font-size: 34px;
-  color: black;
+  font-size: 28px;
+  color: #002B5C;
   padding-top: 1%;
   padding-bottom: 1%;
   padding-left: 3%;
@@ -122,27 +122,19 @@ main {
   margin-right: auto;
   /*width: 15%;*/
   text-align: center;
-  border: 2px solid black;
+  /*border: 2px solid black;*/
   -webkit-appearance: none;
-}
-
-.btnBox {
-  margin-top: 3%;
-  margin-left: auto;
-  margin-right: auto;
-  height: 10%;
-  width: 10%
 }
 
 .boxScore {
   display: none;
-  color: black;
+  color: #002B5C;
   padding-top: 1%;
   padding-bottom: 1%;
   padding-left: 3%;
   padding-right: 3%;
   font-family: 'Digital';
-  font-size: 20px;
+  font-size: 28px;
   /*height: 5%;*/
   margin-top: 3%;
   margin-bottom: 3%;
@@ -150,14 +142,14 @@ main {
   margin-right: auto;
   /*width: 15%;*/
   text-align: center;
-  border: 2px solid black;
+  /*border: 2px solid black;*/
   -webkit-appearance: none;
 }
 
-.boxScore:hover, .homebtn:hover, .homeFromBox:hover {
+.boxScore:hover, .homebtn:hover, .homeFromBox:hover, .boxScore:hover {
   cursor: pointer;
-  background-color: rgba(0, 43, 92, 0.1);
-  color: white
+  /*background-color: rgba(0, 43, 92, 0.1);*/
+  color: #E31837;
 }
 
 .homeBox {
@@ -250,7 +242,7 @@ main {
 
 
 .boxx {
-  display: none
+  display: none;
 }
 
 
@@ -432,6 +424,12 @@ table, th, td {
   height: 80%;
   width: 50%;
   text-align: center;
+}
+
+.all h1 {
+  font-size: 40px;
+  font-family: 'Digital';
+  color: black
 }
 
 .logo {
