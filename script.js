@@ -95,7 +95,8 @@ function getGame(){
       $('.container').show()
       $('.scoreboard').show()
       $('.hidden').show()
-      $('body').css('background', backgroundColor)
+      $('body').css('background-image', 'url("./handsbg.png")')
+      // $('body').css('background', backgroundColor)
       $('#scowlWall').show()
       $('.tweetButton').show()
       $('.showAll').show()
@@ -202,7 +203,9 @@ function getGame(){
         $('.loading').hide()
         $('.scoreboard').show()
         $('.hidden').show()
-        $('body').css('background', backgroundColor)
+        // $('body').css('background', backgroundColor)
+        $('body').css('background-image', 'url("./handsbg.png")')
+
         // $('.tweetButton').show()
 
         if (lastGame.h.ta === 'WAS' && parseInt(lastGame.h.s) < parseInt(lastGame.v.s)) {
@@ -299,7 +302,8 @@ function browseGames() {
   $('.scoreboard').hide()
   $('.tweetButton').hide()
   $('.intro').hide()
-  $('body').css('background', backgroundColor)
+  $('body').css('background-image', 'url("./handsbg.png")')
+  // $('body').css('background', backgroundColor)
   $('.all').show()
   $('.choose').append(`<option>Choose A Game</option>`)
   $('.choose').show()
@@ -377,7 +381,9 @@ function browseGames() {
                   $('.scoreboard').show()
                   $('.hidden').show()
                   $('select').empty()
-                  $('body').css('background', backgroundColor)
+                  // $('body').css('background', backgroundColor)
+                  $('body').css('background-image', 'url("./handsbg.png")')
+
 
                   if (filteredGame[0].h.ta === 'WAS' && parseInt(filteredGame[0].h.s) < parseInt(filteredGame[0].v.s)) {
                           if (filteredGame[0].ptsls.pl.length > 0) {
@@ -577,7 +583,7 @@ function browseGames() {
                         wizIsHome = false
                       }
 
-                      $('.statText').append(`<p data-neon="basic">Game was on ${month}/${day}/${year} in ${response.basicGameData.arena.city}...
+                      $('.statText').append(`<p>Game was on ${month}/${day}/${year} in ${response.basicGameData.arena.city}...
                         ${response.basicGameData.nugget.text}...Game lasted ${response.basicGameData.gameDuration.hours}
                         hours and ${response.basicGameData.gameDuration.minutes} minutes...There were ${response.stats.leadChanges} lead changes and
                         ${response.stats.timesTied} ties...`)
@@ -635,7 +641,8 @@ function browseGames() {
                         console.log(otherPlayers)
                         // getPlayers()
                         $('.loading').hide()
-                        $('body').css('background', backgroundColor)
+                        $('body').css('background-image', 'url("./handsbg.png")')
+                        // $('body').css('background', backgroundColor)
                         // $('.box').css('visibility', 'visible')
                         $('.boxx').show()
                         $('.statText').fadeIn(300)
