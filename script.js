@@ -1,6 +1,7 @@
 //remember to clear out the select after each query
 var game
-var backgroundColor = 'linear-gradient(-90deg, #002B5C, #C4CED4, #E31837)'
+// var backgroundColor = 'linear-gradient(-90deg, #002B5C, #C4CED4, #E31837)'
+var backgroundColor = 'linear-gradient(-90deg, #000000, #C4CED4, #000000)'
 // var backgroundColor = 'black'
 var selectedMonth
 console.log(teams)
@@ -576,7 +577,7 @@ function browseGames() {
                         wizIsHome = false
                       }
 
-                      $('.statText').append(`<p>Game was on ${month}/${day}/${year} in ${response.basicGameData.arena.city}...
+                      $('.statText').append(`<p data-neon="basic">Game was on ${month}/${day}/${year} in ${response.basicGameData.arena.city}...
                         ${response.basicGameData.nugget.text}...Game lasted ${response.basicGameData.gameDuration.hours}
                         hours and ${response.basicGameData.gameDuration.minutes} minutes...There were ${response.stats.leadChanges} lead changes and
                         ${response.stats.timesTied} ties...`)
