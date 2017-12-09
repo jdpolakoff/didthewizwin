@@ -302,11 +302,11 @@ function browseGames() {
   $('.scoreboard').hide()
   $('.tweetButton').hide()
   $('.intro').hide()
-  $('body').css('background-image', 'url("./handsbg.png")')
   // $('body').css('background', backgroundColor)
   $('.all').show()
   $('.choose').append(`<option>Choose A Game</option>`)
   $('.choose').show()
+  $('body').css('background-image', 'url("./handsbg.png")')
   var url3 = `https://cors-anywhere.herokuapp.com/http://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2017/league/00_full_schedule.json`
   var gameMap
   var selects
