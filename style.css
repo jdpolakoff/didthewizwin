@@ -127,7 +127,6 @@ main {
   /*width: 15%;*/
   text-align: center;
   /*border: 2px solid black;*/
-  -webkit-appearance: none;
 }
 
 .boxScore {
@@ -147,7 +146,6 @@ main {
   /*width: 15%;*/
   text-align: center;
   /*border: 2px solid black;*/
-  -webkit-appearance: none;
 }
 
 .boxScore:hover, .homebtn:hover, .homeFromBox:hover, .boxScore:hover {
@@ -346,7 +344,6 @@ table, th, td {
   margin: auto;
   /*border: 2px solid black;*/
   vertical-align: center;
-  -webkit-appearance: none;
 }
 
 .latest h3 {
@@ -395,7 +392,6 @@ table, th, td {
   text-align: center;
   /*border: 2px solid black;*/
   vertical-align: center;
-  -webkit-appearance: none;
 }
 
 .intro h1 {
