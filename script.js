@@ -69,7 +69,7 @@ function getGame(){
   }
 
   var year = date.getYear() + 1900
-  var url = `https://cors-anywhere.herokuapp.com/http://data.nba.net/10s/prod/v2/${year}${month}${day}/scoreboard.json`
+  var url = `https://calm-dawn-83504.herokuapp.com/http://data.nba.net/10s/prod/v2/${year}${month}${day}/scoreboard.json`
   $.ajax({
     url: url,
     type: 'get',
@@ -151,7 +151,7 @@ function getGame(){
 
     } else {
 
-      var url2 = `https://cors-anywhere.herokuapp.com/http://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2017/league/00_full_schedule.json`
+      var url2 = `https://calm-dawn-83504.herokuapp.com/http://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2017/league/00_full_schedule.json`
       var lastGame
       var arr = []
       var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -309,7 +309,7 @@ function browseGames() {
   $('.choose').append(`<option>Choose A Game</option>`)
   $('.choose').show()
   $('body').css('background-image', 'url("./handsbg.png")')
-  var url3 = `https://cors-anywhere.herokuapp.com/http://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2017/league/00_full_schedule.json`
+  var url3 = `https://calm-dawn-83504.herokuapp.com/http://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2017/league/00_full_schedule.json`
   var gameMap
   var selects
   var arr = []
@@ -351,7 +351,7 @@ function browseGames() {
           $('.all').hide()
           $('body').css('background', 'white')
 
-          var url4 = `https://cors-anywhere.herokuapp.com/http://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2017/league/00_full_schedule.json`
+          var url4 = `https://calm-dawn-83504.herokuapp.com/http://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2017/league/00_full_schedule.json`
           var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
           $.ajax({
@@ -531,7 +531,7 @@ function browseGames() {
                   })
 
                   function getBox() {
-                    var url5 = `https://cors-anywhere.herokuapp.com/http://data.nba.net/data/10s/prod/v1/${year}${month}${day}/${filteredGame[0].gid}_boxscore.json`
+                    var url5 = `https://calm-dawn-83504.herokuapp.com/http://data.nba.net/data/10s/prod/v1/${year}${month}${day}/${filteredGame[0].gid}_boxscore.json`
                     $.ajax({
                       url: url5,
                       type: 'get',
@@ -597,7 +597,7 @@ function browseGames() {
                       var otherPlayers = []
 
                       // function getPlayers(){
-                            var url6 = `https://cors-anywhere.herokuapp.com/http://data.nba.net/data/10s/prod/v1/2017/players.json`
+                            var url6 = `https://calm-dawn-83504.herokuapp.com/http://data.nba.net/data/10s/prod/v1/2017/players.json`
 
                             $.ajax({
                               url: url6,
