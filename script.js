@@ -165,6 +165,9 @@ function getGame(){
           $('.loading').show()
         }
       }).done((response) => {
+        var todaysMonth = Date.today().toString('MMMM')
+        console.log(todaysMonth)
+        if (todaysMonth !== 'January') {
         console.log(months[months.indexOf(Date.today().toString('MMMM')) - 1])
         for (i = 0; i < response.lscd.length; i++){
           if (response.lscd[i].mscd.mon === Date.today().toString('MMMM')) {
@@ -178,6 +181,7 @@ function getGame(){
             }
             if (arr.length > 0) {
             var lastGame = arr.pop()
+            // in case no games in January
           } else {
             var selectedMonth = response.lscd.filter(function(item){
               return item.mscd.mon === months[months.indexOf(Date.today().toString('MMMM')) - 1]
@@ -195,6 +199,24 @@ function getGame(){
           }
         }
       }
+    } else {
+      if (arr.length === 0) {
+          console.log(month)
+          var selectedMonth = response.lscd.filter(function(item){
+            return item.mscd.mon === 'December'
+          })
+          console.log(selectedMonth)
+          var filter = selectedMonth[0].mscd.g.filter(function(game){
+            return game.h.tn === 'Wizards' || game.v.tn === 'Wizards'
+      })
+      for (i = 0; i < filter.length; i++) {
+        if (filter[i].stt === 'Final') {
+          arr.push(filter[i])
+        }
+      }
+      var lastGame = arr.pop()
+     }
+    }
 
         var arr3 = []
         arr3.push(lastGame.gdte.split('-')[1])
